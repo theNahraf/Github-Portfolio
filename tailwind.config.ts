@@ -7,9 +7,6 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./portfolio.tsx",
     "./contribution.tsx",
-    "!./node_modules",
-    "!./.next",
-    "!./dist",
   ],
   theme: {
     extend: {
