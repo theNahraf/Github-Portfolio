@@ -7,7 +7,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ExternalLink, Github, Linkedin, Mail, Phone, Star, Trophy, MapPin, Building, GitFork, BookOpen, Code, Zap, Menu, X, Download } from 'lucide-react'
 import Link from "next/link"
 import { useState } from "react"
-import ContributionGraph from "./contribution"
 
 export default function Component() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
