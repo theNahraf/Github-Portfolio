@@ -289,7 +289,7 @@ export default function Component() {
               <CardContent className="pt-0 space-y-3">
                 {codingStats.map((stat, index) => (
                   <Link key={index} href={stat.url}>
-                  <div key={index} className={`mb-3 p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
+                  <div className={`mb-3 p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-medium text-white text-sm">{stat.platform}</span>
                       <span className={`text-sm font-bold ${stat.color}`}>{stat.rating}</span>
@@ -391,13 +391,15 @@ export default function Component() {
                 </CardHeader>
                 <CardContent className="pt-0 space-y-2 sm:space-y-3">
                   {codingStats.map((stat, index) => (
-                    <div key={index} className={`p-2 sm:p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
+                    <Link key={index} href={stat.url}>
+                    <div className={`p-2 mb-3 sm:p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
                       <div className="flex items-center justify-between mb-1 sm:mb-2">
                         <span className="font-medium text-white text-xs sm:text-sm">{stat.platform}</span>
                         <span className={`text-xs sm:text-sm font-bold ${stat.color}`}>{stat.rating}</span>
                       </div>
                       <div className="text-xs text-[#7d8590]">{stat.problems} problems solved</div>
                     </div>
+                    </Link>
                   ))}
                 </CardContent>
               </Card>
