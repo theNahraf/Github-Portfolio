@@ -26,7 +26,7 @@ export default function Component() {
       title: "Notification System (LLD)",
       description: "Built a C++ notification system with SMS, Email, and Push support using OOPS and design patterns",
       tech: ["C++", "OOP", "Design Patterns"],
-      github: "https://github.com/theNahraf/notification-system",
+      github: "https://github.com/theNahraf/Notification_LLD_Scalable_System_Design",
       date: "May 2025",
       stars: 12,
       forks: 3,
@@ -40,7 +40,7 @@ export default function Component() {
       title: "SpotLight - The Social App",
       description: "Built a social app with story, media uploads, and real-time like/comment functionality",
       tech: ["React Native", "TypeScript", "MongoDB"],
-      github: "https://github.com/theNahraf/spotlight",
+      github: "https://github.com/theNahraf/spotlight-the-interaction-app",
       date: "January 2025",
       stars: 28,
       forks: 7,
@@ -51,8 +51,8 @@ export default function Component() {
       title: "StudyNotion – EdTech",
       description: "Built a full-stack EdTech platform with course creation, enrollment, and Razorpay integration",
       tech: ["Node.js", "Express.js", "MongoDB", "React.js"],
-      github: "https://github.com/theNahraf/studynotion",
-      demo: "https://studynotion-demo.vercel.app",
+      github: "https://github.com/theNahraf/StudyNotion-Edtech",
+      demo: "https://study-notion-mern-stack.netlify.app/",
       date: "November 2024",
       stars: 45,
       forks: 12,
@@ -107,18 +107,20 @@ export default function Component() {
     {
       platform: "LeetCode",
       rating: "1800+",
-      problems: "400+",
+      problems: "600+",
       color: "text-[#ffa116]",
       bgColor: "bg-[#ffa116]/10",
       borderColor: "border-[#ffa116]/20",
+      url: `https://www.leetcode.com/u/urraf`
     },
     {
       platform: "Codeforces",
-      rating: "1650",
-      problems: "200+",
+      rating: "450+",
+      problems: "100+",
       color: "text-[#1f8acb]",
       bgColor: "bg-[#1f8acb]/10",
       borderColor: "border-[#1f8acb]/20",
+      url: `https://codeforces.com/profile/nahraf.xd`
     },
   ]
 
@@ -139,7 +141,7 @@ export default function Component() {
                   Overview
                 </Link>
                 <Link
-                  href="#repositories"
+                  href = {`https://github.com/theNahraf?tab=repositories`}
                   className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap"
                 >
                   Repositories
@@ -176,7 +178,7 @@ export default function Component() {
                 <Link href="#overview" className="text-[#e6edf3] hover:text-white transition-colors py-1 w-full">
                   Overview
                 </Link>
-                <Link href="#repositories" className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
+                <Link href={`https://github.com/theNahraf?tab=repositories`} className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
                   Repositories
                 </Link>
                 <Link href="#projects" className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
@@ -233,7 +235,7 @@ export default function Component() {
 
               <div className="text-center xl:text-left">
                 <h1 className="text-2xl font-semibold text-white mb-1">Farhan</h1>
-                <p className="text-xl text-[#7d8590] mb-3">theNahraf</p>
+                <Link href={`https://www.github.com/thenahraf`} className="text-xl text-[#00e2e8] mb-3">Github</Link>
                 <p className="text-[#e6edf3] mb-4 leading-relaxed">
                   Full-Stack Developer & CS Student passionate about building scalable applications and exploring deep
                   learning.
@@ -286,13 +288,16 @@ export default function Component() {
               </CardHeader>
               <CardContent className="pt-0 space-y-3">
                 {codingStats.map((stat, index) => (
-                  <div key={index} className={`p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
+                  <Link key={index} href={stat.url}>
+                  <div key={index} className={`mb-3 p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-medium text-white text-sm">{stat.platform}</span>
                       <span className={`text-sm font-bold ${stat.color}`}>{stat.rating}</span>
                     </div>
                     <div className="text-xs text-[#7d8590]">{stat.problems} problems solved</div>
                   </div>
+                  </Link>
+
                 ))}
               </CardContent>
             </Card>
@@ -349,26 +354,26 @@ export default function Component() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 w-full">
               <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
                 <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">15</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Repositories</div>
+                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">18+</div>
+                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Github Repositories</div>
                 </CardContent>
               </Card>
               <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
                 <CardContent className="p-2 sm:p-4 text-center">
                   <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">1.8k</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">LeetCode</div>
+                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">LeetCode Ratings</div>
                 </CardContent>
               </Card>
               <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
                 <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">1.6k</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Codeforces</div>
+                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">450+</div>
+                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Codeforces Ratings</div>
                 </CardContent>
               </Card>
               <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
                 <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">600+</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Problems</div>
+                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">700+</div>
+                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Problem Solved</div>
                 </CardContent>
               </Card>
             </div>
@@ -637,7 +642,7 @@ export default function Component() {
 
                           <div className="flex flex-wrap gap-2 sm:gap-3 text-xs text-[#7d8590]">
                             <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#f1e05a] flex-shrink-0" />
+                              <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#f1e05a] flex-shrink-0`} />
                               <span>{project.language}</span>
                             </div>
                             <div className="flex items-center gap-1">
