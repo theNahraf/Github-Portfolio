@@ -131,7 +131,7 @@ export default function Component() {
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
               <Avatar className="h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0">
-                <AvatarImage src="/placeholder.svg?height=32&width=32" alt="Farhan" />
+                <AvatarImage src="/profile1.jpeg?height=32&width=32" alt="Farhan" />
                 <AvatarFallback className="bg-[#21262d] text-white text-xs sm:text-sm">F</AvatarFallback>
               </Avatar>
               <span className="text-white font-medium text-xs sm:text-base truncate">Farhan</span>
@@ -202,12 +202,12 @@ export default function Component() {
         <div className="lg:hidden mb-4 sm:mb-6 w-full">
           <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4 w-full">
             <Avatar className="h-20 w-20 sm:h-32 sm:w-32 flex-shrink-0">
-              <AvatarImage src="/placeholder.svg?height=128&width=128" alt="Farhan" className="object-cover" />
+              <AvatarImage src="/profile1.jpeg?height=128&width=128" alt="Farhan" className="object-cover" />
               <AvatarFallback className="bg-[#21262d] text-xl sm:text-3xl text-white">F</AvatarFallback>
             </Avatar>
             <div className="w-full max-w-sm mx-auto">
               <h1 className="text-lg sm:text-2xl font-semibold text-white mb-1">Farhan</h1>
-              <p className="text-sm sm:text-lg text-[#7d8590] mb-2">theNahraf</p>
+              <Link href={`https://www.github.com/thenahraf`} className="text-sm sm:text-lg text-[#00e2e8] mb-2">Github</Link>
               <p className="text-xs sm:text-sm text-[#e6edf3] mb-3 sm:mb-4 leading-relaxed px-2">
                 Full-Stack Developer & CS Student passionate about building scalable applications
               </p>
@@ -228,7 +228,7 @@ export default function Component() {
             {/* Desktop Profile Card */}
             <div className="space-y-4">
               <Avatar className="h-64 w-64 mx-auto xl:h-72 xl:w-72">
-                <AvatarImage src="/placeholder.svg?height=288&width=288" alt="Farhan" className="object-cover" />
+                <AvatarImage src="/profile1.jpeg?height=288&width=288" alt="Farhan" className="object-fit" />
                 <AvatarFallback className="bg-[#21262d] text-5xl xl:text-6xl text-white">F</AvatarFallback>
               </Avatar>
 
@@ -375,9 +375,9 @@ export default function Component() {
             </div>
 
             {/* Contribution Graph */}
-            <div className="w-full">
+            {/* <div className="w-full">
               <ContributionGraph />
-            </div>
+            </div> */}
 
             {/* Mobile Coding Platform Stats */}
             <div className="lg:hidden w-full">
