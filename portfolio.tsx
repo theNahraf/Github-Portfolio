@@ -16,7 +16,7 @@ export default function Component() {
   const handleDownloadResume = () => {
     const link = document.createElement("a")
     link.href = "/resume.pdf"
-    link.download = "Farhan_Resume.pdf"
+    link.download = "Farhan_sde_resume.pdf"
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
