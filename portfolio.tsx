@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ExternalLink, Github, Linkedin, Mail, Phone, Star, Trophy, MapPin, Building, GitFork, BookOpen, Code, Zap, Menu, X, Download } from 'lucide-react'
 import Link from "next/link"
 import { useState } from "react"
+import { url } from "inspector"
 
 export default function Component() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -21,32 +22,89 @@ export default function Component() {
     document.body.removeChild(link)
   }
 
+const languageColors: Record<string, string> = {
+  Python: "#3572A2",
+  JavaScript: "#f1e05a",
+  TypeScript: "#2b7489",
+  C: "#555555",
+  "C++": "#f34b7d",
+  Java: "#b07219",
+  HTML: "#e34c26",
+  CSS: "#563d7c",
+  "Jupyter Notebook": "#DA5B0B",
+  Shell: "#89e051",
+  Go: "#00ADD8",
+  Rust: "#dea584",
+  Ruby: "#701516",
+  PHP: "#4F5D95",
+  Swift: "#ffac45",
+  Kotlin: "#A97BFF",
+  default: "#6e7681", // fallback color
+};
+
+
   const projects = [
     {
       title: "Notification System (LLD)",
       description: "Built a C++ notification system with SMS, Email, and Push support using OOPS and design patterns",
       tech: ["C++", "OOP", "Design Patterns"],
       github: "https://github.com/theNahraf/Notification_LLD_Scalable_System_Design",
-      date: "May 2025",
-      stars: 12,
-      forks: 3,
+      date: "June 2025",
+      stars: 1,
+      forks: 1,
       language: "C++",
-      highlights: [
-        "Applied Strategy and Decorator patterns with SOLID principles",
-        "Ensured clean, Scalable design with notification tracking",
-      ],
+     highlights: [`Designed a modular notification system supporting SMS, Email, and Push channels using the Strategy and
+ Decorator patterns`, `Applied SOLID principles to ensure extensibility and clean separation of concerns between sender and message
+ interfaces`, ` Implemented a plug-and-play architecture using the Decorator pattern to dynamically switch and combine
+ notification channels (Email, SMS, Push); designed the system to be easily extensible and stored all dispatched
+ notifications for future tracking`],
     },
+    {
+      title: "Potato Disease Classification App",
+      description: `Developed a mobile app that detects potato leaf diseases using a CNN model with 90%+ accuracy, enabling real-time predictions from camera input via FastAPI and React Native.`,
+      tech: ["TensorFlow", "FastAPI", "CNN", "React Native", "Python"],
+      github: "https://github.com/theNahraf",
+      date: "June 2025",
+      stars: 1,
+      forks: 1,
+      language: "Python",
+      highlights: [ `Built a mobile application powered by a CNN model to classify potato leaf diseases as Healthy, Early Blight, or
+ Late Blight`,` Trained the model on a labeled image dataset, achieving 90%+ validation accuracy using convolutional layers,
+ dropout, and data augmentation`, `Integrated the model into a camera-based app that allows users to click a photo and instantly get disease
+ predictions`, `Designed the app interface for real-time use by farmers and agronomists to assist in early disease detection`],
+    },
+     {
+  title: "Journalist CMS",
+  description: "Built a secure full-stack CMS and portfolio platform for a journalist to publish and manage stories",
+  tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase"],
+  github: "https://github.com/theNahraf/Journalist-CMS-Kashmir-Voice-Project",
+   demo: "https://www.fizalakhan.com",
+  date: "Feb 2025",
+  stars: 1,
+  forks: 1,
+  language: "JavaScript",
+highlights: [
+  `Engineered a cost-effective deployment strategy by adding a 30-second loop in the backend to keep the Render free-tier server warm, ensuring the CMS stays live without delays`,
+  `Delivered a robust CMS and portfolio system for a Kashmiri journalist, enabling seamless publishing and management of 30+ live articles`,
+  `Integrated Firebase for secure authentication and MongoDB for scalable content storage`,
+  `Boosted SEO performance by 50% and improved page load speed by 40% through optimized rendering and media handling`,
+  `Designed with accessibility and reliability in mind to ensure uninterrupted access to sensitive stories`
+],
+
+},
+
     {
       title: "SpotLight - The Social App",
       description: "Built a social app with story, media uploads, and real-time like/comment functionality",
       tech: ["React Native", "TypeScript", "MongoDB"],
       github: "https://github.com/theNahraf/spotlight-the-interaction-app",
       date: "January 2025",
-      stars: 28,
-      forks: 7,
+      stars: 1,
+      forks: 1,
       language: "TypeScript",
       highlights: ["Interactive UI with smooth media handling", "Secure authentication and MongoDB integration"],
     },
+
     {
       title: "StudyNotion – EdTech",
       description: "Built a full-stack EdTech platform with course creation, enrollment, and Razorpay integration",
@@ -54,11 +112,17 @@ export default function Component() {
       github: "https://github.com/theNahraf/StudyNotion-Edtech",
       demo: "https://study-notion-mern-stack.netlify.app/",
       date: "November 2024",
-      stars: 45,
-      forks: 12,
+      stars: 1,
+      forks: 1,
       language: "JavaScript",
-      highlights: ["Role-based authentication using JWT and OTP", "Integrated AI chatbot for student queries"],
+      highlights: [`Developed a full-stack EdTech platform capable of handling up to 500 concurrent users with features for course
+ creation, management, and student enrollment`,
+ `Implemented role-based authentication using JWT, with OTP-based login verification for enhanced security`,
+ `Integrated Razorpay for secure payments and deployed an AI-powered chatbot that handles 100+ student queries
+ weekly`],
     },
+   
+
   ]
 
   const experiences = [
@@ -68,6 +132,7 @@ export default function Component() {
       location: "New Delhi, Delhi",
       period: "June 2025 – Present",
       type: "Hydroponic Plant Analysis",
+      url : "",
       description: [
         "Working on classification of hydroponic plant conditions using deep learning on hyperspectral data",
         "Analyzing plant leaf spectra to predict chemical deficiencies and nutrient imbalances",
@@ -77,13 +142,17 @@ export default function Component() {
     {
       title: "Full-Stack Web Developer",
       company: "Client: Journalist (Kashmir)",
-      location: "fizalakhan.com",
+      location: "",
+      url:'https://www.fizalakhan.com',
       period: "Dec. 2024 – June 2025",
       type: "Freelance",
       description: [
-        "Created a secure MERN stack portfolio + blog for a journalist with a hidden admin dashboard",
-        "Built a custom panel for article management without exposing public login",
-        "Ensured 24/7 uptime on free-tier hosting by implementing a backend refresh loop",
+        `Collaborated with small businesses and individuals to build and modernize websites, boosting online presence and driving customer engagement`,
+        `Developed SEO-optimized personal blogs and portfolio platforms for creators and 
+        professionals, reducing content publishing time by up to 60%`,
+        `Optimized a journalist’s CMS blog and portfolio by reducing page load time from minutes to seconds through
+ backend refactoring implemented a 30-second interval loop to pre-fetch data, significantly improving responsiveness
+ and cutting hosting cost`,
       ],
     },
   ]
@@ -106,7 +175,7 @@ export default function Component() {
   const codingStats = [
     {
       platform: "LeetCode",
-      rating: "1800+",
+      rating: "1500+",
       problems: "600+",
       color: "text-[#ffa116]",
       bgColor: "bg-[#ffa116]/10",
@@ -131,8 +200,8 @@ export default function Component() {
         <div className="mx-auto max-w-7xl w-full">
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-              <Avatar className="h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0">
-                <AvatarImage src="/profile1.jpeg?height=32&width=32" alt="Farhan" />
+              <Avatar className="h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0 ">
+                <AvatarImage src="/profile2.jpeg?height=32&width=32" alt="Farhan"  className="object-cover"/>
                 <AvatarFallback className="bg-[#21262d] text-white text-xs sm:text-sm">F</AvatarFallback>
               </Avatar>
               <span className="text-white font-medium text-xs sm:text-base truncate">Farhan</span>
@@ -141,13 +210,21 @@ export default function Component() {
                   Overview
                 </Link>
                 <Link
-                  href = {`https://github.com/theNahraf?tab=repositories`}
+                  href = {`https://github.com/theNahraf`}
+                  target="_blank"  rel="noopener noreferrer"
                   className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap"
                 >
-                  Repositories
+                  Github
                 </Link>
-                <Link href="#projects" className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
-                  Projects
+                <Link href={`https://www.linkedin.com/in/nahrafxd`}
+                  target="_blank"  rel="noopener noreferrer"
+                className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
+                  Linkedin
+                </Link>
+                <Link href={`https://www.x.com/urrafx`}
+                  target="_blank"  rel="noopener noreferrer"
+                className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
+                  Twitter
                 </Link>
               </nav>
             </div>
@@ -178,11 +255,21 @@ export default function Component() {
                 <Link href="#overview" className="text-[#e6edf3] hover:text-white transition-colors py-1 w-full">
                   Overview
                 </Link>
-                <Link href={`https://github.com/theNahraf?tab=repositories`} className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
-                  Repositories
+                <Link href={`https://github.com/theNahraf`} 
+                target="_blank"  rel="noopener noreferrer"
+                className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
+                  Github
                 </Link>
-                <Link href="#projects" className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
-                  Projects
+                <Link 
+                href={`https://www.linkedin.com/in/nahrafxd`}
+                  target="_blank"  rel="noopener noreferrer"
+                className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
+                  Linkedin
+                </Link>
+                <Link href={`https://www.x.com/urrafx`}
+                target="_blank"  rel="noopener noreferrer"
+                className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
+                  Twitter
                 </Link>
                 <Button
                   size="sm"
@@ -209,9 +296,13 @@ export default function Component() {
             <div className="w-full max-w-sm mx-auto">
               <h1 className="text-lg sm:text-2xl font-semibold text-white mb-1">Farhan</h1>
               <Link href={`https://www.github.com/thenahraf`} className="text-sm sm:text-lg text-[#00e2e8] mb-2">Github</Link>
-              <p className="text-xs sm:text-sm text-[#e6edf3] mb-3 sm:mb-4 leading-relaxed px-2">
-                Full-Stack Developer & CS Student passionate about building scalable applications
-              </p>
+              <div className="text-xs sm:text-sm text-[#e6edf3] mb-3 sm:mb-4 leading-relaxed px-2">
+                🚀 Full-Stack Developer | CS Student | Competitive Programmer | Deep Learning Enthusiast 
+                <p className="text-gray-500 mt-2">Building scalable, production-grade web apps while
+                   solving complex algorithmic problems. Passionate about clean architecture, system design,
+                    and pushing the boundaries of AI.</p>
+
+              </div>
               <Button
                 onClick={handleDownloadResume}
                 className="bg-[#238636] hover:bg-[#2ea043] text-white border-0 text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 w-full sm:w-auto"
@@ -228,18 +319,19 @@ export default function Component() {
           <div className="hidden lg:block lg:col-span-1 space-y-6">
             {/* Desktop Profile Card */}
             <div className="space-y-4">
-              <Avatar className="h-64 w-64 mx-auto xl:h-72 xl:w-72">
-                <AvatarImage src="/profile1.jpeg?height=288&width=288" alt="Farhan" className="object-fit" />
+              <Avatar className="h-64 w-64 mx-auto xl:h-72 xl:w-72 ">
+                <AvatarImage src="/profile2.jpeg?height=288&width=288" alt="Farhan" className="object-cover" />
                 <AvatarFallback className="bg-[#21262d] text-5xl xl:text-6xl text-white">F</AvatarFallback>
               </Avatar>
 
               <div className="text-center xl:text-left">
                 <h1 className="text-2xl font-semibold text-white mb-1">Farhan</h1>
                 <Link href={`https://www.github.com/thenahraf`} className="text-xl text-[#00e2e8] mb-3">Github</Link>
-                <p className="text-[#e6edf3] mb-4 leading-relaxed">
-                  Full-Stack Developer & CS Student passionate about building scalable applications and exploring deep
-                  learning.
-                </p>
+                <div className="text-[#e6edf3] font-bold mb-4 leading-relaxed">
+               🚀 Full-Stack Developer | CS Student | Competitive Programmer | Deep Learning Enthusiast 
+<p className="text-gray-500 mt-3">Building scalable, production-grade web apps while solving complex algorithmic problems. Passionate about clean architecture, system design, and pushing the boundaries of AI.
+               </p>
+                </div>
 
                 <Button
                   onClick={handleDownloadResume}
@@ -360,7 +452,7 @@ export default function Component() {
               </Card>
               <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
                 <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">1.8k</div>
+                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">1.5k</div>
                   <div className="text-xs sm:text-sm text-[#7d8590] truncate">LeetCode Ratings</div>
                 </CardContent>
               </Card>
@@ -507,9 +599,7 @@ export default function Component() {
                         <div className="flex flex-wrap gap-1">
                           {[
                             "Data Structures",
-                            "Web Development",
-                            "Algorithms",
-                            "Database Management",
+                            "Database Management System",
                             "Operating Systems",
                             "Computer Networks",
                             "System Design",
@@ -551,7 +641,15 @@ export default function Component() {
                               <div className="flex flex-wrap items-center gap-1">
                                 <span className="text-[#58a6ff]">{exp.company}</span>
                                 <span className="hidden sm:inline">•</span>
-                                <span className="break-all">{exp.location}</span>
+                                <span className="break-all">{exp.url == "" && exp.location}</span>
+                                <Link
+                              href={exp.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-400 hover:underline"
+                            >
+                              {exp.location === "" && exp.url}
+                            </Link>
                               </div>
                               <Badge
                                 variant="outline"
@@ -602,9 +700,12 @@ export default function Component() {
                         <div className="flex flex-col gap-2">
                           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                             <div className="flex flex-col sm:flex-row sm:items-center gap-2 min-w-0">
-                              <h3 className="font-semibold text-[#58a6ff] hover:underline cursor-pointer text-xs sm:text-sm sm:text-base truncate">
+                              <Link href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-semibold text-[#58a6ff] hover:underline cursor-pointer text-xs sm:text-sm sm:text-base truncate">
                                 {project.title}
-                              </h3>
+                              </Link>
                               <Badge
                                 variant="outline"
                                 className="border-[#30363d] text-[#7d8590] text-xs w-fit flex-shrink-0"
@@ -633,7 +734,7 @@ export default function Component() {
                                 >
                                   <Link href={project.demo}>
                                     <ExternalLink className="h-3 w-3 mr-1" />
-                                    Demo
+                                    Live
                                   </Link>
                                 </Button>
                               )}
@@ -644,7 +745,11 @@ export default function Component() {
 
                           <div className="flex flex-wrap gap-2 sm:gap-3 text-xs text-[#7d8590]">
                             <div className="flex items-center gap-1">
-                              <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#f1e05a] flex-shrink-0`} />
+                              <div
+                            className="w-2 h-2 sm:w-3 sm:h-3 rounded-full flex-shrink-0"
+                            style={{ backgroundColor: languageColors[project.language] || languageColors.default }}
+                          />
+
                               <span>{project.language}</span>
                             </div>
                             <div className="flex items-center gap-1">
@@ -736,7 +841,7 @@ export default function Component() {
               </Link>
             </div>
             <span className="text-[#7d8590] text-xs sm:text-sm text-center px-2">
-              © 2025 Farhan. Built with Next.js and Tailwind CSS
+              Crafted with care by Farhan • 2025
             </span>
           </div>
         </div>
