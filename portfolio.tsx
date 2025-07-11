@@ -290,7 +290,7 @@ highlights: [
         <div className="lg:hidden mb-4 sm:mb-6 w-full">
           <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4 w-full">
             <Avatar className="h-20 w-20 sm:h-32 sm:w-32 flex-shrink-0">
-              <AvatarImage src="/profile1.jpeg?height=128&width=128" alt="Farhan" className="object-cover" />
+              <AvatarImage src="/profile2.jpeg?height=128&width=128" alt="Farhan" className="object-cover" />
               <AvatarFallback className="bg-[#21262d] text-xl sm:text-3xl text-white">F</AvatarFallback>
             </Avatar>
             <div className="w-full max-w-sm mx-auto">
