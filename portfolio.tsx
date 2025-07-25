@@ -524,7 +524,7 @@ highlights: [
                     </div>
                     <div className="flex items-center gap-2">
                       <Phone className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-                      <span>8700840260</span>
+                      <span>87XXXXXXXX</span>
                     </div>
                     <div className="flex items-center gap-2 min-w-0">
                       <Linkedin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
