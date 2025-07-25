@@ -175,22 +175,22 @@ highlights: [
   const codingStats = [
     {
       platform: "LeetCode",
-      rating: "1500+",
-      problems: "600+",
+      rating: "1800+",
+      problems: "400+",
       color: "text-[#ffa116]",
       bgColor: "bg-[#ffa116]/10",
       borderColor: "border-[#ffa116]/20",
       url: `https://www.leetcode.com/u/urraf`
     },
-    {
-      platform: "Codeforces",
-      rating: "450+",
-      problems: "100+",
-      color: "text-[#1f8acb]",
-      bgColor: "bg-[#1f8acb]/10",
-      borderColor: "border-[#1f8acb]/20",
-      url: `https://codeforces.com/profile/nahraf.xd`
-    },
+    // {
+    //   platform: "Codeforces",
+    //   rating: "450+",
+    //   problems: "100+",
+    //   color: "text-[#1f8acb]",
+    //   bgColor: "bg-[#1f8acb]/10",
+    //   borderColor: "border-[#1f8acb]/20",
+    //   url: `https://codeforces.com/profile/nahraf.xd`
+    // },
   ]
 
   return (
@@ -452,20 +452,20 @@ highlights: [
               </Card>
               <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
                 <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">1.5k</div>
+                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">1.8k</div>
                   <div className="text-xs sm:text-sm text-[#7d8590] truncate">LeetCode Ratings</div>
                 </CardContent>
               </Card>
               <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
                 <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">450+</div>
+                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">1000+</div>
                   <div className="text-xs sm:text-sm text-[#7d8590] truncate">Codeforces Ratings</div>
                 </CardContent>
               </Card>
               <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
                 <CardContent className="p-2 sm:p-4 text-center">
                   <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">700+</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Problem Solved</div>
+                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Total Problem Solved</div>
                 </CardContent>
               </Card>
             </div>
