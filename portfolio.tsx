@@ -367,7 +367,7 @@ highlights: [
                   </div>
                   <div className="flex items-center gap-2 text-[#7d8590] justify-center xl:justify-start">
                     <Phone className="h-4 w-4 flex-shrink-0" />
-                    <span>8700840260</span>
+                    <span>8XXXXXXXX</span>
                   </div>
                 </div>
               </div>
