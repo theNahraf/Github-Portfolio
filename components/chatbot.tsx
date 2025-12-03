@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card } from "@/components/ui/card"
 import { MessageCircle, X, Send, Bot } from "lucide-react"
 
 interface Message {
@@ -11,10 +10,24 @@ interface Message {
   content: string
 }
 
+interface Project {
+  title: string
+  description: string
+  tech: string[]
+  highlights?: string[]
+}
+
+interface Experience {
+  title: string
+  company: string
+  period: string
+  description: string[]
+}
+
 interface ChatbotProps {
   portfolioData: {
-    projects: any[]
-    experiences: any[]
+    projects: Project[]
+    experiences: Experience[]
     skills: Record<string, string[]>
     achievements: string[]
   }
