@@ -31,10 +31,13 @@ export async function POST(request: NextRequest) {
     const { messages, portfolioData } = await request.json() as { messages: Message[], portfolioData: PortfolioData }
 
     // Get Gemini API key from environment variables
-    const apiKey = process.env.GEMINI_API_KEY
+    // In development, fallback to a default key if env var is not set (for local testing only)
+    const apiKey = process.env.GEMINI_API_KEY || (process.env.NODE_ENV === 'development' ? "AIzaSyDfQ0ZqxlAuOyoxECh7Tgosu9vZoiOE1kY" : undefined)
+    
     if (!apiKey) {
+      console.error("GEMINI_API_KEY is not set in environment variables")
       return NextResponse.json(
-        { error: "GEMINI_API_KEY environment variable is not set" },
+        { error: "GEMINI_API_KEY environment variable is not set. Please set it in .env.local file and restart your dev server." },
         { status: 500 }
       )
     }
@@ -116,10 +119,16 @@ Answer questions about yourself and your portfolio in a friendly, conversational
     })
 
     if (!response.ok) {
-      const error = await response.json()
-      console.error("Gemini API error:", error)
+      const errorText = await response.text()
+      let errorData
+      try {
+        errorData = JSON.parse(errorText)
+      } catch {
+        errorData = { message: errorText }
+      }
+      console.error("Gemini API error:", errorData)
       return NextResponse.json(
-        { error: error.error?.message || "Failed to get AI response from Gemini" },
+        { error: errorData.error?.message || errorData.message || "Failed to get AI response from Gemini" },
         { status: response.status }
       )
     }
