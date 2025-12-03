@@ -8,6 +8,7 @@ import { ExternalLink, Github, Linkedin, Mail, Phone, Star, Trophy, MapPin, Buil
 import Link from "next/link"
 import { useState } from "react"
 import { url } from "inspector"
+import Chatbot from "@/components/chatbot"
 
 export default function Component() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -846,6 +847,16 @@ highlights: [
           </div>
         </div>
       </footer>
+
+      {/* AI Chatbot */}
+      <Chatbot 
+        portfolioData={{
+          projects,
+          experiences,
+          skills,
+          achievements
+        }}
+      />
     </div>
   )
 }
