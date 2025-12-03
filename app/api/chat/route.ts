@@ -1,8 +1,34 @@
 import { NextRequest, NextResponse } from "next/server"
 
+interface Project {
+  title: string
+  description: string
+  tech: string[]
+  highlights?: string[]
+}
+
+interface Experience {
+  title: string
+  company: string
+  period: string
+  description: string[]
+}
+
+interface Message {
+  role: "user" | "assistant"
+  content: string
+}
+
+interface PortfolioData {
+  projects: Project[]
+  experiences: Experience[]
+  skills: Record<string, string[]>
+  achievements: string[]
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const { messages, portfolioData } = await request.json()
+    const { messages, portfolioData } = await request.json() as { messages: Message[], portfolioData: PortfolioData }
 
     // Use Gemini API key (you can also set it in environment variables)
     const apiKey = process.env.GEMINI_API_KEY || "AIzaSyDfQ0ZqxlAuOyoxECh7Tgosu9vZoiOE1kY"
@@ -13,13 +39,13 @@ export async function POST(request: NextRequest) {
 Here is your portfolio information:
 
 **Projects:**
-${portfolioData.projects.map((p: any) => `- ${p.title}: ${p.description}. Technologies: ${p.tech.join(", ")}. Highlights: ${p.highlights?.join(" ") || ""}`).join("\n")}
+${portfolioData.projects.map((p: Project) => `- ${p.title}: ${p.description}. Technologies: ${p.tech.join(", ")}. Highlights: ${p.highlights?.join(" ") || ""}`).join("\n")}
 
 **Experience:**
-${portfolioData.experiences.map((e: any) => `- ${e.title} at ${e.company} (${e.period}): ${e.description.join(" ")}`).join("\n")}
+${portfolioData.experiences.map((e: Experience) => `- ${e.title} at ${e.company} (${e.period}): ${e.description.join(" ")}`).join("\n")}
 
 **Skills:**
-${Object.entries(portfolioData.skills).map(([cat, items]: [string, any]) => `${cat}: ${items.join(", ")}`).join("\n")}
+${Object.entries(portfolioData.skills).map(([cat, items]: [string, string[]]) => `${cat}: ${items.join(", ")}`).join("\n")}
 
 **Achievements:**
 ${portfolioData.achievements.join(". ")}
@@ -46,7 +72,7 @@ Answer questions about yourself and your portfolio in a friendly, conversational
     // Build conversation history for context (last 4 messages)
     const recentMessages = messages.slice(-4)
     const conversationHistory = recentMessages
-      .map((msg: any) => `${msg.role === "user" ? "User" : "Assistant"}: ${msg.content}`)
+      .map((msg: Message) => `${msg.role === "user" ? "User" : "Assistant"}: ${msg.content}`)
       .join("\n")
 
     // Combine system context with conversation history and current question
@@ -98,10 +124,11 @@ Answer questions about yourself and your portfolio in a friendly, conversational
     const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response."
     
     return NextResponse.json({ message: aiResponse })
-  } catch (error: any) {
+  } catch (error) {
     console.error("Chat API error:", error)
+    const errorMessage = error instanceof Error ? error.message : "Internal server error"
     return NextResponse.json(
-      { error: error.message || "Internal server error" },
+      { error: errorMessage },
       { status: 500 }
     )
   }
