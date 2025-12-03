@@ -9,6 +9,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { url } from "inspector"
 import Chatbot from "@/components/chatbot"
+import AnimatedBackground from "@/components/animated-background"
 
 export default function Component() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -195,7 +196,10 @@ highlights: [
   ]
 
   return (
-    <div className="min-h-screen bg-[#0d1117] text-[#e6edf3] w-full overflow-x-hidden">
+    <div className="min-h-screen bg-[#0d1117] text-[#e6edf3] w-full overflow-x-hidden relative">
+      {/* Animated Background */}
+      <AnimatedBackground />
+      
       {/* Header */}
       <header className="border-b border-[#21262d] bg-[#010409] px-2 sm:px-4 py-2 sm:py-4 sticky top-0 z-50 w-full">
         <div className="mx-auto max-w-7xl w-full">
@@ -286,7 +290,7 @@ highlights: [
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-2 sm:px-4 py-3 sm:py-6 lg:py-8 w-full">
+      <main className="mx-auto max-w-7xl px-2 sm:px-4 py-3 sm:py-6 lg:py-8 w-full relative z-10">
         {/* Mobile Profile Header */}
         <div className="lg:hidden mb-4 sm:mb-6 w-full">
           <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4 w-full">
@@ -818,7 +822,7 @@ highlights: [
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#21262d] bg-[#010409] px-2 sm:px-4 py-4 sm:py-6 mt-6 sm:mt-8 w-full">
+      <footer className="border-t border-[#21262d] bg-[#010409] px-2 sm:px-4 py-4 sm:py-6 mt-6 sm:mt-8 w-full relative z-10">
         <div className="mx-auto max-w-7xl w-full">
           <div className="flex flex-col items-center gap-3 sm:gap-4">
             <div className="flex items-center gap-3 sm:gap-4">
