@@ -149,7 +149,9 @@ export default function Chatbot({ portfolioData }: ChatbotProps) {
                       : "bg-[#161b22] text-[#e6edf3] border border-[#30363d]"
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
+                  <div className="text-sm whitespace-pre-wrap break-words leading-relaxed space-y-1">
+                    {message.content}
+                  </div>
                 </div>
               </div>
             ))}

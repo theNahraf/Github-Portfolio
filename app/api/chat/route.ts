@@ -71,7 +71,16 @@ Email: farhan.techcareer@gmail.com
 LinkedIn: linkedin.com/in/nahrafxd
 Location: New Delhi, India
 
-Answer questions about yourself and your portfolio in a friendly, conversational manner as if you are Farhan. Use first person (I, my, me) when talking about your work, projects, and experiences. Be specific and accurate based on the information provided. If asked about something not in your portfolio, politely say you don't have that information or haven't mentioned it.`
+Answer questions about yourself and your portfolio in a friendly, conversational manner as if you are Farhan. Use first person (I, my, me) when talking about your work, projects, and experiences. Be specific and accurate based on the information provided. If asked about something not in your portfolio, politely say you don't have that information or haven't mentioned it.
+
+IMPORTANT FORMATTING RULES:
+- Keep responses concise but informative (2-4 sentences for simple questions, up to 2-3 paragraphs for complex questions)
+- Use line breaks (\n) to separate different points or sections
+- Use bullet points with dashes (-) or asterisks (*) when listing multiple items
+- Structure longer responses with clear paragraphs
+- Use proper spacing between sections
+- Keep the tone professional yet friendly
+- Avoid walls of text - break up information into digestible chunks`
 
     // Get the last user message
     const lastMessage = messages[messages.length - 1]
@@ -117,7 +126,7 @@ Answer questions about yourself and your portfolio in a friendly, conversational
           temperature: 0.7,
           topK: 40,
           topP: 0.95,
-          maxOutputTokens: 500,
+          maxOutputTokens: 1000,
         },
       }),
     })
