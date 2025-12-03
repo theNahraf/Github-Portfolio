@@ -30,8 +30,14 @@ export async function POST(request: NextRequest) {
   try {
     const { messages, portfolioData } = await request.json() as { messages: Message[], portfolioData: PortfolioData }
 
-    // Use Gemini API key (you can also set it in environment variables)
-    const apiKey = process.env.GEMINI_API_KEY || "AIzaSyDfQ0ZqxlAuOyoxECh7Tgosu9vZoiOE1kY"
+    // Get Gemini API key from environment variables
+    const apiKey = process.env.GEMINI_API_KEY
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "GEMINI_API_KEY environment variable is not set" },
+        { status: 500 }
+      )
+    }
 
     // Create system prompt with portfolio data
     const systemContext = `You are Farhan, a Full-Stack Developer, CS Student, Competitive Programmer, and Deep Learning Enthusiast.
