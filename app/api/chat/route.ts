@@ -36,8 +36,12 @@ export async function POST(request: NextRequest) {
     
     if (!apiKey) {
       console.error("GEMINI_API_KEY is not set in environment variables")
+      console.error("NODE_ENV:", process.env.NODE_ENV)
+      console.error("Available env vars:", Object.keys(process.env).filter(key => key.includes('GEMINI') || key.includes('API')))
       return NextResponse.json(
-        { error: "GEMINI_API_KEY environment variable is not set. Please set it in .env.local file and restart your dev server." },
+        { 
+          error: "GEMINI_API_KEY environment variable is not set. For Vercel: Go to Settings → Environment Variables and add GEMINI_API_KEY with your API key value." 
+        },
         { status: 500 }
       )
     }

@@ -74,7 +74,8 @@ export default function Chatbot({ portfolioData }: ChatbotProps) {
       })
 
       if (!response.ok) {
-        throw new Error("Failed to get response")
+        const errorData = await response.json().catch(() => ({ error: "Unknown error" }))
+        throw new Error(errorData.error || "Failed to get response")
       }
 
       const data = await response.json()
@@ -87,7 +88,7 @@ export default function Chatbot({ portfolioData }: ChatbotProps) {
       console.error("Chat error:", error)
       const errorMessage: Message = {
         role: "assistant",
-        content: "Sorry, I'm having trouble connecting. Please try again later.",
+        content: error instanceof Error ? error.message : "Sorry, I'm having trouble connecting. Please try again later.",
       }
       setMessages((prev) => [...prev, errorMessage])
     } finally {
