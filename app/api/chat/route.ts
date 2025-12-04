@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 
     // Get Gemini API key from environment variables
     // In development, fallback to a default key if env var is not set (for local testing only)
-    const apiKey = process.env.GEMINI_API_KEY
+    const apiKey = process.env.GEMINI_API_KEY || (process.env.NODE_ENV === 'development' && undefined)
     
     if (!apiKey) {
       console.error("GEMINI_API_KEY is not set in environment variables")
