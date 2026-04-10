@@ -15,12 +15,8 @@ export default function Component() {
 
   // Function to handle resume download
   const handleDownloadResume = () => {
-    const link = document.createElement("a")
-    link.href = "/resume.pdf"
-    link.download = "Farhan_sde_resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    // Navigate to our dedicated download API which forces the browser to download the file via headers
+    window.location.href = "/api/download/resume";
   }
 
   const languageColors: Record<string, string> = {
