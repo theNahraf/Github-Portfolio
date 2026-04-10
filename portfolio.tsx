@@ -277,27 +277,25 @@ export default function Component() {
 
       <main className="mx-auto max-w-7xl px-2 sm:px-4 py-3 sm:py-6 lg:py-8 w-full relative z-10">
         {/* Mobile Profile Header */}
-        <div className="lg:hidden mb-4 sm:mb-6 w-full">
-          <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4 w-full">
-            <Avatar className="h-20 w-20 sm:h-32 sm:w-32 flex-shrink-0">
-              <AvatarImage src="/profile2.jpeg?height=128&width=128" alt="Farhan" className="object-cover" />
-              <AvatarFallback className="bg-[#21262d] text-xl sm:text-3xl text-white">F</AvatarFallback>
+        <div className="lg:hidden mb-8 sm:mb-10 w-full mt-2">
+          <div className="flex flex-col items-center text-center space-y-4 sm:space-y-6 w-full">
+            <Avatar className="h-28 w-28 sm:h-40 sm:w-40 flex-shrink-0 border-4 border-[#30363d] shadow-lg shadow-[#58a6ff]/10">
+              <AvatarImage src="/profile2.jpeg?height=160&width=160" alt="Farhan" className="object-cover" />
+              <AvatarFallback className="bg-[#21262d] text-3xl sm:text-4xl text-white">F</AvatarFallback>
             </Avatar>
-            <div className="w-full max-w-sm mx-auto">
-              <h1 className="text-lg sm:text-2xl font-semibold text-white mb-1">Farhan</h1>
-              <Link href={`https://www.github.com/thenahraf`} className="text-sm sm:text-lg text-[#00e2e8] mb-2">Github</Link>
-              <div className="text-xs sm:text-sm text-[#e6edf3] mb-3 sm:mb-4 leading-relaxed px-2">
-                🚀 Software Engineer | Distributed Systems Enthusiast | Competitive Programmer
-                <p className="text-gray-500 mt-2">Building scalable, production-grade microservices while
-                  solving complex algorithmic problems. Passionate about system design, high-throughput backend architecture,
-                  and clean code.</p>
-
+            <div className="w-full max-w-sm mx-auto px-2">
+              <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 tracking-tight">Farhan</h1>
+              <Link href={`https://www.github.com/thenahraf`} className="text-base sm:text-lg text-[#58a6ff] hover:text-[#79c0ff] font-medium mb-3 block transition-colors">@theNahraf</Link>
+              <div className="text-sm sm:text-base text-[#e6edf3] mb-6 leading-relaxed bg-[#161b22]/40 border border-[#30363d] p-4 sm:p-5 rounded-2xl shadow-sm backdrop-blur-sm">
+                🚀 Software Engineer | Distributed Systems Enthusiast
+                <p className="text-[#8b949e] mt-2 font-medium">Building scalable, production-grade microservices while
+                  solving complex algorithmic problems.</p>
               </div>
               <Button
                 onClick={handleDownloadResume}
-                className="bg-[#238636] hover:bg-[#2ea043] text-white border-0 text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 w-full sm:w-auto"
+                className="bg-gradient-to-r from-[#238636] to-[#2ea043] hover:from-[#2ea043] hover:to-[#3fb950] text-white border-0 text-base sm:text-lg px-6 py-6 sm:py-7 w-full shadow-lg shadow-[#238636]/20 transition-all font-semibold rounded-xl"
               >
-                <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                <Download className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
                 Download Resume
               </Button>
             </div>
@@ -433,29 +431,29 @@ export default function Component() {
           {/* Main Content */}
           <div className="lg:col-span-3 space-y-3 sm:space-y-6 w-full min-w-0">
             {/* Stats Cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 w-full">
-              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
-                <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">25+</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Github Repositories</div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full">
+              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-all hover:bg-[#1f242c] min-w-0 shadow-sm rounded-xl">
+                <CardContent className="p-4 sm:p-5 text-center flex flex-col justify-center h-full">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">25+</div>
+                  <div className="text-xs sm:text-sm text-[#7d8590] truncate font-medium">Github Repos</div>
                 </CardContent>
               </Card>
-              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
-                <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">1.8k</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">LeetCode Ratings</div>
+              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-all hover:bg-[#1f242c] min-w-0 shadow-sm rounded-xl">
+                <CardContent className="p-4 sm:p-5 text-center flex flex-col justify-center h-full">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#ffa116] mb-1">1.8k</div>
+                  <div className="text-xs sm:text-sm text-[#7d8590] truncate font-medium">LeetCode Rating</div>
                 </CardContent>
               </Card>
-              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
-                <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">1000+</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Codeforces Ratings</div>
+              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-all hover:bg-[#1f242c] min-w-0 shadow-sm rounded-xl">
+                <CardContent className="p-4 sm:p-5 text-center flex flex-col justify-center h-full">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#1f8acb] mb-1">1000+</div>
+                  <div className="text-xs sm:text-sm text-[#7d8590] truncate font-medium">Codeforces</div>
                 </CardContent>
               </Card>
-              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
-                <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">700+</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate">Total Problem Solved</div>
+              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-all hover:bg-[#1f242c] min-w-0 shadow-sm rounded-xl">
+                <CardContent className="p-4 sm:p-5 text-center flex flex-col justify-center h-full">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#2ea043] mb-1">700+</div>
+                  <div className="text-xs sm:text-sm text-[#7d8590] truncate font-medium">Problems Solved</div>
                 </CardContent>
               </Card>
             </div>
@@ -467,19 +465,19 @@ export default function Component() {
 
             {/* Mobile Coding Platform Stats */}
             <div className="lg:hidden w-full">
-              <Card className="bg-[#161b22] border-[#30363d]">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-white text-sm">Coding Platforms</CardTitle>
+              <Card className="bg-[#161b22] border-[#30363d] rounded-xl shadow-sm">
+                <CardHeader className="pb-3 pt-5 px-5">
+                  <CardTitle className="text-white text-base font-semibold">Coding Platforms</CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0 space-y-2 sm:space-y-3">
+                <CardContent className="pt-0 space-y-3 px-5 pb-5">
                   {codingStats.map((stat, index) => (
-                    <Link key={index} href={stat.url}>
-                      <div className={`p-2 mb-3 sm:p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
-                        <div className="flex items-center justify-between mb-1 sm:mb-2">
-                          <span className="font-medium text-white text-xs sm:text-sm">{stat.platform}</span>
-                          <span className={`text-xs sm:text-sm font-bold ${stat.color}`}>{stat.rating}</span>
+                    <Link key={index} href={stat.url} className="block">
+                      <div className={`p-3 sm:p-4 rounded-xl border ${stat.bgColor} ${stat.borderColor} transition-all hover:scale-[1.02]`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-semibold text-white text-sm sm:text-base">{stat.platform}</span>
+                          <span className={`text-sm sm:text-base font-bold ${stat.color}`}>{stat.rating}</span>
                         </div>
-                        <div className="text-xs text-[#7d8590]">{stat.problems} problems solved</div>
+                        <div className="text-sm text-[#7d8590] font-medium">{stat.problems} problems solved</div>
                       </div>
                     </Link>
                   ))}
@@ -489,38 +487,48 @@ export default function Component() {
 
             {/* Mobile Contact Info */}
             <div className="lg:hidden w-full">
-              <Card className="bg-[#161b22] border-[#30363d]">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-white text-sm">Contact</CardTitle>
+              <Card className="bg-[#161b22] border-[#30363d] rounded-xl shadow-sm">
+                <CardHeader className="pb-3 pt-5 px-5">
+                  <CardTitle className="text-white text-base font-semibold">Contact</CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="grid grid-cols-1 gap-2 sm:gap-3 text-xs sm:text-sm">
-                    <div className="flex items-center gap-2 text-[#7d8590]">
-                      <Building className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-                      <span>NSUT</span>
+                <CardContent className="pt-0 px-5 pb-5">
+                  <div className="grid grid-cols-1 gap-4 sm:gap-5 text-sm sm:text-base">
+                    <div className="flex items-center gap-3 text-[#e6edf3]">
+                      <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
+                        <Building className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
+                      </div>
+                      <span className="font-medium">NSUT</span>
                     </div>
-                    <div className="flex items-center gap-2 text-[#7d8590]">
-                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-                      <span>New Delhi, India</span>
+                    <div className="flex items-center gap-3 text-[#e6edf3]">
+                      <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
+                        <MapPin className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
+                      </div>
+                      <span className="font-medium">New Delhi, India</span>
                     </div>
-                    <div className="flex items-center gap-2 min-w-0">
-                      <Mail className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
+                        <Mail className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
+                      </div>
                       <Link
                         href="mailto:farhan.techcareer@gmail.com"
-                        className="text-[#58a6ff] hover:underline text-xs break-all min-w-0"
+                        className="text-[#58a6ff] hover:text-[#79c0ff] hover:underline break-all min-w-0 font-medium"
                       >
                         farhan.techcareer@gmail.com
                       </Link>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Phone className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-                      <span>87XXXXXXXX</span>
+                    <div className="flex items-center gap-3 text-[#e6edf3]">
+                      <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
+                        <Phone className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
+                      </div>
+                      <span className="font-medium">+91-***********</span>
                     </div>
-                    <div className="flex items-center gap-2 min-w-0">
-                      <Linkedin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
+                        <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
+                      </div>
                       <Link
                         href="https://linkedin.com/in/nahrafxd/"
-                        className="text-[#58a6ff] hover:underline text-xs truncate min-w-0"
+                        className="text-[#58a6ff] hover:text-[#79c0ff] hover:underline truncate min-w-0 font-medium"
                       >
                         linkedin.com/in/nahrafxd
                       </Link>
@@ -532,20 +540,20 @@ export default function Component() {
 
             {/* Mobile Technical Skills */}
             <div className="lg:hidden w-full">
-              <Card className="bg-[#161b22] border-[#30363d]">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-white text-sm">Technical Skills</CardTitle>
+              <Card className="bg-[#161b22] border-[#30363d] rounded-xl shadow-sm">
+                <CardHeader className="pb-3 pt-5 px-5">
+                  <CardTitle className="text-white text-base font-semibold">Technical Skills</CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0 space-y-3 sm:space-y-4">
+                <CardContent className="pt-0 space-y-5 px-5 pb-5">
                   {Object.entries(skills).map(([category, items]) => (
                     <div key={category} className="w-full">
-                      <h4 className="font-medium text-white text-xs sm:text-sm mb-2">{category}</h4>
-                      <div className="flex flex-wrap gap-1">
+                      <h4 className="font-semibold text-white text-sm sm:text-base mb-3">{category}</h4>
+                      <div className="flex flex-wrap gap-2">
                         {items.map((skill) => (
                           <Badge
                             key={skill}
                             variant="secondary"
-                            className="bg-[#21262d] text-[#58a6ff] border-[#30363d] text-xs hover:bg-[#30363d] transition-colors"
+                            className="bg-[#21262d] text-[#58a6ff] border-[#30363d] text-sm hover:bg-[#30363d] transition-colors py-1 px-3 shadow-none"
                           >
                             {skill}
                           </Badge>
@@ -558,35 +566,35 @@ export default function Component() {
             </div>
 
             {/* Education */}
-            <Card className="bg-[#161b22] border-[#30363d] w-full">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white flex items-center gap-2 text-sm">
-                  <BookOpen className="h-3 w-3 sm:h-4 sm:w-4" />
+            <Card className="bg-[#161b22] border-[#30363d] w-full shadow-sm rounded-xl">
+              <CardHeader className="pb-3 pt-5 px-5">
+                <CardTitle className="text-white flex items-center gap-2 text-base font-semibold">
+                  <BookOpen className="h-4 w-4 sm:h-5 sm:w-5" />
                   Education
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
-                <div className="border-l-2 border-[#30363d] pl-3 sm:pl-4">
-                  <div className="flex flex-col gap-2">
+              <CardContent className="pt-0 px-5 pb-5">
+                <div className="border-l-2 border-[#30363d] pl-4 sm:pl-5">
+                  <div className="flex flex-col gap-3">
                     <div className="flex flex-col gap-2">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-semibold text-white text-xs sm:text-sm sm:text-base">
+                          <h3 className="font-semibold text-white text-sm sm:text-base lg:text-lg">
                             Bachelor of Technology
                           </h3>
-                          <p className="text-[#58a6ff] text-xs sm:text-sm">Information Technology</p>
-                          <p className="text-[#7d8590] text-xs">Netaji Subhas University of Technology, New Delhi</p>
+                          <p className="text-[#58a6ff] text-sm sm:text-base">Information Technology</p>
+                          <p className="text-[#7d8590] text-xs sm:text-sm">Netaji Subhas University of Technology, New Delhi</p>
                         </div>
                         <Badge
                           variant="outline"
-                          className="border-[#30363d] text-[#7d8590] text-xs w-fit flex-shrink-0"
+                          className="border-[#30363d] text-[#7d8590] text-xs sm:text-sm w-fit flex-shrink-0"
                         >
                           2023 - 2027
                         </Badge>
                       </div>
-                      <div className="mt-2 sm:mt-3">
-                        <h4 className="font-medium text-white text-xs sm:text-sm mb-2">Relevant Coursework</h4>
-                        <div className="flex flex-wrap gap-1">
+                      <div className="mt-3 sm:mt-4">
+                        <h4 className="font-medium text-white text-sm sm:text-base mb-3">Relevant Coursework</h4>
+                        <div className="flex flex-wrap gap-2">
                           {[
                             "Data Structures",
                             "Database Management System",
@@ -598,7 +606,7 @@ export default function Component() {
                             <Badge
                               key={course}
                               variant="outline"
-                              className="text-xs border-[#30363d] text-[#7d8590] hover:border-[#58a6ff] transition-colors"
+                              className="text-xs sm:text-sm py-1 px-3 border-[#30363d] text-[#7d8590] hover:border-[#58a6ff] hover:text-[#58a6ff] transition-colors"
                             >
                               {course}
                             </Badge>
@@ -612,38 +620,38 @@ export default function Component() {
             </Card>
 
             {/* Experience */}
-            <Card className="bg-[#161b22] border-[#30363d] w-full">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white flex items-center gap-2 text-sm">
-                  <Zap className="h-3 w-3 sm:h-4 sm:w-4" />
+            <Card className="bg-[#161b22] border-[#30363d] w-full shadow-sm rounded-xl">
+              <CardHeader className="pb-3 pt-5 px-5">
+                <CardTitle className="text-white flex items-center gap-2 text-base font-semibold">
+                  <Zap className="h-4 w-4 sm:h-5 sm:w-5" />
                   Experience
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-0 space-y-4 sm:space-y-6">
+              <CardContent className="pt-0 space-y-6 sm:space-y-8 px-5 pb-5">
                 {experiences.map((exp, index) => (
-                  <div key={index} className="border-l-2 border-[#30363d] pl-3 sm:pl-4 space-y-2 sm:space-y-3">
-                    <div className="flex flex-col gap-2">
+                  <div key={index} className="border-l-2 border-[#30363d] pl-4 sm:pl-5 space-y-3 sm:space-y-4">
+                    <div className="flex flex-col gap-3">
                       <div className="flex flex-col gap-2">
-                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                           <div className="flex-1 min-w-0">
-                            <h3 className="font-semibold text-white text-xs sm:text-sm sm:text-base">{exp.title}</h3>
-                            <div className="flex flex-col gap-1 text-xs sm:text-sm text-[#7d8590] mt-1">
-                              <div className="flex flex-wrap items-center gap-1">
-                                <span className="text-[#58a6ff]">{exp.company}</span>
+                            <h3 className="font-semibold text-white text-sm sm:text-base lg:text-lg">{exp.title}</h3>
+                            <div className="flex flex-col gap-1 text-sm text-[#7d8590] mt-1.5">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-[#58a6ff] font-medium">{exp.company}</span>
                                 <span className="hidden sm:inline">•</span>
                                 <span className="break-all">{exp.url == "" && exp.location}</span>
                                 <Link
                                   href={exp.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-blue-400 hover:underline"
+                                  className="text-blue-400 hover:underline hover:text-blue-300 transition-colors"
                                 >
                                   {exp.location === "" && exp.url}
                                 </Link>
                               </div>
                               <Badge
                                 variant="outline"
-                                className="border-[#30363d] text-[#7d8590] text-xs w-fit flex-shrink-0"
+                                className="border-[#30363d] text-[#7d8590] text-xs sm:text-sm w-fit flex-shrink-0 mt-1"
                               >
                                 {exp.type}
                               </Badge>
@@ -651,15 +659,15 @@ export default function Component() {
                           </div>
                           <Badge
                             variant="outline"
-                            className="w-fit text-xs border-[#30363d] text-[#7d8590] flex-shrink-0"
+                            className="w-fit text-xs sm:text-sm border-[#30363d] text-[#7d8590] flex-shrink-0"
                           >
                             {exp.period}
                           </Badge>
                         </div>
-                        <ul className="space-y-1 text-xs sm:text-sm text-[#e6edf3]">
+                        <ul className="space-y-2 text-sm sm:text-base text-[#e6edf3] mt-2">
                           {exp.description.map((item, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <span className="text-[#7d8590] mt-1.5 text-xs flex-shrink-0">▸</span>
+                            <li key={i} className="flex items-start gap-3">
+                              <span className="text-[#58a6ff] mt-1 text-sm flex-shrink-0">▹</span>
                               <span className="leading-relaxed">{item}</span>
                             </li>
                           ))}
@@ -672,46 +680,46 @@ export default function Component() {
             </Card>
 
             {/* Featured Projects */}
-            <Card className="bg-[#161b22] border-[#30363d] w-full">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white flex items-center gap-2 text-sm">
-                  <Code className="h-3 w-3 sm:h-4 sm:w-4" />
+            <Card className="bg-[#161b22] border-[#30363d] w-full shadow-sm rounded-xl">
+              <CardHeader className="pb-3 pt-5 px-5">
+                <CardTitle className="text-white flex items-center gap-2 text-base font-semibold">
+                  <Code className="h-4 w-4 sm:h-5 sm:w-5" />
                   Featured Projects
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-0 space-y-3 sm:space-y-4 sm:space-y-6">
+              <CardContent className="pt-0 space-y-4 sm:space-y-6 px-4 sm:px-5 pb-5">
                 {projects.map((project, index) => (
                   <div
                     key={index}
-                    className="border border-[#30363d] rounded-lg p-2 sm:p-4 hover:border-[#58a6ff] transition-colors w-full"
+                    className="border border-[#30363d] rounded-xl p-4 sm:p-6 hover:border-[#58a6ff] hover:bg-[#1f242c] transition-all w-full shadow-sm"
                   >
-                    <div className="space-y-2 sm:space-y-3">
-                      <div className="flex flex-col gap-2">
-                        <div className="flex flex-col gap-2">
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 min-w-0">
+                    <div className="space-y-3 sm:space-y-4">
+                      <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-3">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-3 min-w-0">
                               <Link href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-semibold text-[#58a6ff] hover:underline cursor-pointer text-xs sm:text-sm sm:text-base truncate">
+                                className="font-bold text-[#58a6ff] hover:text-[#79c0ff] hover:underline cursor-pointer text-base sm:text-lg lg:text-xl truncate transition-colors">
                                 {project.title}
                               </Link>
                               <Badge
                                 variant="outline"
-                                className="border-[#30363d] text-[#7d8590] text-xs w-fit flex-shrink-0"
+                                className="border-[#30363d] text-[#7d8590] text-xs sm:text-sm w-fit flex-shrink-0"
                               >
                                 Public
                               </Badge>
                             </div>
-                            <div className="flex gap-1 sm:gap-2 flex-shrink-0">
+                            <div className="flex gap-2 sm:gap-3 flex-shrink-0 pt-1 sm:pt-0">
                               <Button
                                 size="sm"
                                 variant="outline"
                                 asChild
-                                className="border-[#30363d] text-[#e6edf3] hover:bg-[#21262d] bg-transparent text-xs px-2 py-1 h-6 sm:h-7"
+                                className="border-[#30363d] text-[#e6edf3] hover:bg-[#21262d] bg-transparent text-xs sm:text-sm px-3 py-1.5 h-8 sm:h-9"
                               >
                                 <Link href={project.github}>
-                                  <Github className="h-3 w-3 mr-1" />
+                                  <Github className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                                   Code
                                 </Link>
                               </Button>
@@ -720,10 +728,10 @@ export default function Component() {
                                   size="sm"
                                   variant="outline"
                                   asChild
-                                  className="border-[#30363d] text-[#e6edf3] hover:bg-[#21262d] bg-transparent text-xs px-2 py-1 h-6 sm:h-7"
+                                  className="border-[#30363d] text-[#e6edf3] hover:bg-[#21262d] bg-transparent text-xs sm:text-sm px-3 py-1.5 h-8 sm:h-9"
                                 >
                                   <Link href={project.demo}>
-                                    <ExternalLink className="h-3 w-3 mr-1" />
+                                    <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                                     Live
                                   </Link>
                                 </Button>
@@ -731,44 +739,44 @@ export default function Component() {
                             </div>
                           </div>
 
-                          <p className="text-[#e6edf3] text-xs sm:text-sm leading-relaxed">{project.description}</p>
+                          <p className="text-[#e6edf3] text-sm sm:text-base leading-relaxed mt-1">{project.description}</p>
 
-                          <div className="flex flex-wrap gap-2 sm:gap-3 text-xs text-[#7d8590]">
-                            <div className="flex items-center gap-1">
+                          <div className="flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm text-[#7d8590] mt-1 font-medium">
+                            <div className="flex items-center gap-1.5">
                               <div
-                                className="w-2 h-2 sm:w-3 sm:h-3 rounded-full flex-shrink-0"
+                                className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full flex-shrink-0"
                                 style={{ backgroundColor: languageColors[project.language] || languageColors.default }}
                               />
 
                               <span>{project.language}</span>
                             </div>
-                            <div className="flex items-center gap-1">
-                              <Star className="h-2 w-2 sm:h-3 sm:w-3 flex-shrink-0" />
+                            <div className="flex items-center gap-1.5">
+                              <Star className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                               <span>{project.stars}</span>
                             </div>
-                            <div className="flex items-center gap-1">
-                              <GitFork className="h-2 w-2 sm:h-3 sm:w-3 flex-shrink-0" />
+                            <div className="flex items-center gap-1.5">
+                              <GitFork className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                               <span>{project.forks}</span>
                             </div>
                             <span className="truncate">Updated {project.date}</span>
                           </div>
 
-                          <div className="flex flex-wrap gap-1">
+                          <div className="flex flex-wrap gap-2 mt-1">
                             {project.tech.map((tech) => (
                               <Badge
                                 key={tech}
                                 variant="secondary"
-                                className="bg-[#21262d] text-[#58a6ff] border-[#30363d] text-xs hover:bg-[#30363d] transition-colors"
+                                className="bg-[#21262d] text-[#58a6ff] border-[#30363d] text-xs sm:text-sm hover:bg-[#30363d] transition-colors py-1 px-2.5 shadow-none"
                               >
                                 {tech}
                               </Badge>
                             ))}
                           </div>
 
-                          <ul className="space-y-1 text-xs sm:text-sm text-[#7d8590]">
+                          <ul className="space-y-2 text-sm sm:text-base text-[#8b949e] mt-3">
                             {project.highlights.map((highlight, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                <span className="mt-1.5 text-xs flex-shrink-0">▸</span>
+                              <li key={i} className="flex items-start gap-3">
+                                <span className="mt-1 text-sm flex-shrink-0 text-[#58a6ff]">▹</span>
                                 <span className="leading-relaxed">{highlight}</span>
                               </li>
                             ))}
@@ -783,19 +791,19 @@ export default function Component() {
 
             {/* Mobile Achievements */}
             <div className="lg:hidden w-full">
-              <Card className="bg-[#161b22] border-[#30363d]">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-white flex items-center gap-2 text-sm">
-                    <Trophy className="h-3 w-3 sm:h-4 sm:w-4 text-[#ffa657]" />
+              <Card className="bg-[#161b22] border-[#30363d] rounded-xl shadow-sm">
+                <CardHeader className="pb-3 pt-5 px-5">
+                  <CardTitle className="text-white flex items-center gap-2 text-base font-semibold">
+                    <Trophy className="h-4 w-4 sm:h-5 sm:w-5 text-[#ffa657]" />
                     Achievements
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-0">
-                  <ul className="space-y-2 sm:space-y-3">
+                <CardContent className="pt-0 px-5 pb-5">
+                  <ul className="space-y-4 sm:space-y-5">
                     {achievements.map((achievement, index) => (
-                      <li key={index} className="flex items-start gap-2 text-xs sm:text-sm">
-                        <Star className="h-2 w-2 sm:h-3 sm:w-3 text-[#ffa657] mt-1 flex-shrink-0" />
-                        <span className="text-[#e6edf3] leading-relaxed">{achievement}</span>
+                      <li key={index} className="flex items-start gap-3 text-sm sm:text-base">
+                        <Star className="h-4 w-4 sm:h-5 sm:w-5 text-[#ffa657] mt-0.5 flex-shrink-0" />
+                        <span className="text-[#e6edf3] leading-relaxed font-medium">{achievement}</span>
                       </li>
                     ))}
                   </ul>
