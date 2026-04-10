@@ -30,24 +30,23 @@ export async function POST(request: NextRequest) {
   try {
     const { messages, portfolioData } = await request.json() as { messages: Message[], portfolioData: PortfolioData }
 
-    // Get Gemini API key from environment variables
-    // In development, fallback to a default key if env var is not set (for local testing only)
-    const apiKey = process.env.GEMINI_API_KEY || (process.env.NODE_ENV === 'development' && undefined)
+    // Get Grok API key from environment variables
+    const apiKey = process.env.GROK_API_KEY
     
     if (!apiKey) {
-      console.error("GEMINI_API_KEY is not set in environment variables")
+      console.error("GROK_API_KEY is not set in environment variables")
       console.error("NODE_ENV:", process.env.NODE_ENV)
-      console.error("Available env vars:", Object.keys(process.env).filter(key => key.includes('GEMINI') || key.includes('API')))
+      console.error("Available env vars:", Object.keys(process.env).filter(key => key.includes('GROK') || key.includes('API')))
       return NextResponse.json(
         { 
-          error: "GEMINI_API_KEY environment variable is not set. For Vercel: Go to Settings → Environment Variables and add GEMINI_API_KEY with your API key value." 
+          error: "GROK_API_KEY environment variable is not set. For Vercel: Go to Settings → Environment Variables and add GROK_API_KEY with your API key value." 
         },
         { status: 500 }
       )
     }
 
     // Create system prompt with portfolio data
-    const systemContext = `You are Farhan, a Full-Stack Developer, CS Student, Competitive Programmer, and Deep Learning Enthusiast.
+    const systemPrompt = `You are Farhan, a Full-Stack Developer, CS Student, Competitive Programmer, and Deep Learning Enthusiast.
 
 Here is your portfolio information:
 
@@ -81,7 +80,7 @@ IMPORTANT FORMATTING RULES:
 - Use proper spacing between sections
 - Keep the tone professional yet friendly
 - Avoid walls of text - break up information into digestible chunks`
-
+    
     // Get the last user message
     const lastMessage = messages[messages.length - 1]
     if (!lastMessage || lastMessage.role !== "user") {
@@ -91,43 +90,30 @@ IMPORTANT FORMATTING RULES:
       )
     }
 
-    // Build conversation history for context (last 4 messages)
+    // Build conversation history for Grok (OpenAI-compatible chat format)
     const recentMessages = messages.slice(-4)
-    const conversationHistory = recentMessages
-      .map((msg: Message) => `${msg.role === "user" ? "User" : "Assistant"}: ${msg.content}`)
-      .join("\n")
+    const chatMessages = [
+      { role: "system", content: systemPrompt },
+      ...recentMessages.map((msg: Message) => ({
+        role: msg.role,
+        content: msg.content,
+      })),
+    ]
 
-    // Combine system context with conversation history and current question
-    const fullPrompt = `${systemContext}\n\nPrevious conversation:\n${conversationHistory}\n\nUser: ${lastMessage.content}\nAssistant:`
-
-    // Call Gemini API - using gemini-2.0-flash (free tier, faster)
-    const modelName = "gemini-2.0-flash"
-    
-    // Use v1beta API with header authentication
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent`
+    // Call Grok API (xAI) - OpenAI-compatible endpoint
+    const apiUrl = "https://api.x.ai/v1/chat/completions"
     
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-goog-api-key": apiKey,
+        "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: fullPrompt,
-              },
-            ],
-          },
-        ],
-        generationConfig: {
-          temperature: 0.7,
-          topK: 40,
-          topP: 0.95,
-          maxOutputTokens: 1000,
-        },
+        model: "grok-3-mini-fast",
+        messages: chatMessages,
+        temperature: 0.7,
+        max_tokens: 1000,
       }),
     })
 
@@ -139,17 +125,17 @@ IMPORTANT FORMATTING RULES:
       } catch {
         errorData = { message: errorText }
       }
-      console.error("Gemini API error:", errorData)
+      console.error("Grok API error:", errorData)
       return NextResponse.json(
-        { error: errorData.error?.message || errorData.message || "Failed to get AI response from Gemini" },
+        { error: errorData.error?.message || errorData.message || "Failed to get AI response from Grok" },
         { status: response.status }
       )
     }
 
     const data = await response.json()
     
-    // Extract the response text from Gemini's response format
-    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response."
+    // Extract the response text from Grok's OpenAI-compatible response format
+    const aiResponse = data.choices?.[0]?.message?.content || "Sorry, I couldn't generate a response."
     
     return NextResponse.json({ message: aiResponse })
   } catch (error) {
