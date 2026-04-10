@@ -110,7 +110,7 @@ IMPORTANT FORMATTING RULES:
         "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "llama3-8b-8192", // Groq's fast Llama 3 model
+        model: "openai/gpt-oss-20b",
         messages: chatMessages,
         temperature: 0.7,
         max_tokens: 1000,
