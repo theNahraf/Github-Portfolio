@@ -24,25 +24,25 @@ export default function Component() {
     document.body.removeChild(link)
   }
 
-const languageColors: Record<string, string> = {
-  Python: "#3572A2",
-  JavaScript: "#f1e05a",
-  TypeScript: "#2b7489",
-  C: "#555555",
-  "C++": "#f34b7d",
-  Java: "#b07219",
-  HTML: "#e34c26",
-  CSS: "#563d7c",
-  "Jupyter Notebook": "#DA5B0B",
-  Shell: "#89e051",
-  Go: "#00ADD8",
-  Rust: "#dea584",
-  Ruby: "#701516",
-  PHP: "#4F5D95",
-  Swift: "#ffac45",
-  Kotlin: "#A97BFF",
-  default: "#6e7681", // fallback color
-};
+  const languageColors: Record<string, string> = {
+    Python: "#3572A2",
+    JavaScript: "#f1e05a",
+    TypeScript: "#2b7489",
+    C: "#555555",
+    "C++": "#f34b7d",
+    Java: "#b07219",
+    HTML: "#e34c26",
+    CSS: "#563d7c",
+    "Jupyter Notebook": "#DA5B0B",
+    Shell: "#89e051",
+    Go: "#00ADD8",
+    Rust: "#dea584",
+    Ruby: "#701516",
+    PHP: "#4F5D95",
+    Swift: "#ffac45",
+    Kotlin: "#A97BFF",
+    default: "#6e7681", // fallback color
+  };
 
 
   const projects = [
@@ -108,28 +108,33 @@ const languageColors: Record<string, string> = {
         "Delivered a robust CMS and portfolio system for a Kashmiri journalist, enabling seamless publishing and management of 30+ live articles.",
         "Boosted SEO performance by 50% and improved page load speed by 40% through optimized rendering and media handling."
       ],
+    },
+    {
+      title: "Scalable Media Download Service",
+      description: "A highly scalable, asynchronous web service designed to process, download, and convert media formats (audio/video) from URLs in the background.",
+      tech: ["Python", "FastAPI", "PostgreSQL", "Redis", "Celery", "AWS S3 / MinIO", "Docker", "yt-dlp"],
+      github: "https://github.com/theNahraf/media-download-service",
+      demo: "https://savemedia.me",
+      date: "2025",
+      stars: 1,
+      forks: 1,
+      language: "Python",
+      highlights: [
+        "Built a highly concurrent media processing API using FastAPI, Python, and PostgreSQL.",
+        "Decoupled heavy compute tasks by segregating FastAPI web nodes from Celery worker nodes using Redis as a message broker.",
+        "Implemented real-time progress tracking by caching live download percentages directly in Redis, averting database contention.",
+        "Integrated AWS S3 / MinIO object storage for large file management, completely bypassing the application server via Pre-Signed URLs.",
+        "Configured robust worker failover strategies and deployed the containerized microservice stack using Docker Compose."
+      ],
     }
   ]
 
   const experiences = [
     {
-      title: "Software Engineer / Backend Developer",
-      company: "Client",
-      location: "Remote",
-      period: "2025",
-      type: "Architect",
-      url : "https://savemedia.me",
-      description: [
-        "Designed and developed an asynchronous, horizontally scalable REST API using FastAPI to process and convert media files, successfully decoupling heavy tasks from the main thread.",
-        "Implemented an event-driven architecture using Redis as a message broker and Celery workers, enabling the system to handle thousands of concurrent requests.",
-        "Containerized the entire multi-tier architecture using Docker and Docker Compose, configuring robust worker failover strategies."
-      ],
-    },
-    {
       title: "Full-Stack Web Developer",
       company: "Client: Journalist (Kashmir)",
       location: "",
-      url:'https://www.fizalakhan.com',
+      url: 'https://www.fizalakhan.com',
       period: "Dec. 2024 – June 2025",
       type: "Freelance",
       description: [
@@ -180,14 +185,14 @@ const languageColors: Record<string, string> = {
     <div className="min-h-screen bg-[#0d1117] text-[#e6edf3] w-full overflow-x-hidden relative">
       {/* Animated Background */}
       <AnimatedBackground />
-      
+
       {/* Header */}
       <header className="border-b border-[#21262d] bg-[#010409] px-2 sm:px-4 py-2 sm:py-4 sticky top-0 z-50 w-full">
         <div className="mx-auto max-w-7xl w-full">
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
               <Avatar className="h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0 ">
-                <AvatarImage src="/profile2.jpeg?height=32&width=32" alt="Farhan"  className="object-cover"/>
+                <AvatarImage src="/profile2.jpeg?height=32&width=32" alt="Farhan" className="object-cover" />
                 <AvatarFallback className="bg-[#21262d] text-white text-xs sm:text-sm">F</AvatarFallback>
               </Avatar>
               <span className="text-white font-medium text-xs sm:text-base truncate">Farhan</span>
@@ -196,20 +201,20 @@ const languageColors: Record<string, string> = {
                   Overview
                 </Link>
                 <Link
-                  href = {`https://github.com/theNahraf`}
-                  target="_blank"  rel="noopener noreferrer"
+                  href={`https://github.com/theNahraf`}
+                  target="_blank" rel="noopener noreferrer"
                   className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap"
                 >
                   Github
                 </Link>
                 <Link href={`https://www.linkedin.com/in/nahrafxd`}
-                  target="_blank"  rel="noopener noreferrer"
-                className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
+                  target="_blank" rel="noopener noreferrer"
+                  className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
                   Linkedin
                 </Link>
                 <Link href={`https://www.x.com/urrafx`}
-                  target="_blank"  rel="noopener noreferrer"
-                className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
+                  target="_blank" rel="noopener noreferrer"
+                  className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
                   Twitter
                 </Link>
               </nav>
@@ -241,20 +246,20 @@ const languageColors: Record<string, string> = {
                 <Link href="#overview" className="text-[#e6edf3] hover:text-white transition-colors py-1 w-full">
                   Overview
                 </Link>
-                <Link href={`https://github.com/theNahraf`} 
-                target="_blank"  rel="noopener noreferrer"
-                className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
+                <Link href={`https://github.com/theNahraf`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
                   Github
                 </Link>
-                <Link 
-                href={`https://www.linkedin.com/in/nahrafxd`}
-                  target="_blank"  rel="noopener noreferrer"
-                className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
+                <Link
+                  href={`https://www.linkedin.com/in/nahrafxd`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
                   Linkedin
                 </Link>
                 <Link href={`https://www.x.com/urrafx`}
-                target="_blank"  rel="noopener noreferrer"
-                className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
+                  target="_blank" rel="noopener noreferrer"
+                  className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
                   Twitter
                 </Link>
                 <Button
@@ -283,10 +288,10 @@ const languageColors: Record<string, string> = {
               <h1 className="text-lg sm:text-2xl font-semibold text-white mb-1">Farhan</h1>
               <Link href={`https://www.github.com/thenahraf`} className="text-sm sm:text-lg text-[#00e2e8] mb-2">Github</Link>
               <div className="text-xs sm:text-sm text-[#e6edf3] mb-3 sm:mb-4 leading-relaxed px-2">
-                🚀 Software Engineer | Distributed Systems Enthusiast | Competitive Programmer 
+                🚀 Software Engineer | Distributed Systems Enthusiast | Competitive Programmer
                 <p className="text-gray-500 mt-2">Building scalable, production-grade microservices while
-                   solving complex algorithmic problems. Passionate about system design, high-throughput backend architecture,
-                    and clean code.</p>
+                  solving complex algorithmic problems. Passionate about system design, high-throughput backend architecture,
+                  and clean code.</p>
 
               </div>
               <Button
@@ -314,9 +319,9 @@ const languageColors: Record<string, string> = {
                 <h1 className="text-2xl font-semibold text-white mb-1">Farhan</h1>
                 <Link href={`https://www.github.com/thenahraf`} className="text-xl text-[#00e2e8] mb-3">Github</Link>
                 <div className="text-[#e6edf3] font-bold mb-4 leading-relaxed">
-               🚀 Software Engineer | Distributed Systems Enthusiast | Competitive Programmer 
-<p className="text-gray-500 mt-3">Building scalable, production-grade microservices while solving complex algorithmic problems. Passionate about system design, high-throughput backend architecture, and clean code.
-               </p>
+                  🚀 Software Engineer | Distributed Systems Enthusiast | Competitive Programmer
+                  <p className="text-gray-500 mt-3">Building scalable, production-grade microservices while solving complex algorithmic problems. Passionate about system design, high-throughput backend architecture, and clean code.
+                  </p>
                 </div>
 
                 <Button
@@ -367,13 +372,13 @@ const languageColors: Record<string, string> = {
               <CardContent className="pt-0 space-y-3">
                 {codingStats.map((stat, index) => (
                   <Link key={index} href={stat.url}>
-                  <div className={`mb-3 p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium text-white text-sm">{stat.platform}</span>
-                      <span className={`text-sm font-bold ${stat.color}`}>{stat.rating}</span>
+                    <div className={`mb-3 p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-medium text-white text-sm">{stat.platform}</span>
+                        <span className={`text-sm font-bold ${stat.color}`}>{stat.rating}</span>
+                      </div>
+                      <div className="text-xs text-[#7d8590]">{stat.problems} problems solved</div>
                     </div>
-                    <div className="text-xs text-[#7d8590]">{stat.problems} problems solved</div>
-                  </div>
                   </Link>
 
                 ))}
@@ -432,7 +437,7 @@ const languageColors: Record<string, string> = {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 w-full">
               <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-colors min-w-0">
                 <CardContent className="p-2 sm:p-4 text-center">
-                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">18+</div>
+                  <div className="text-base sm:text-xl lg:text-2xl font-bold text-white">25+</div>
                   <div className="text-xs sm:text-sm text-[#7d8590] truncate">Github Repositories</div>
                 </CardContent>
               </Card>
@@ -470,13 +475,13 @@ const languageColors: Record<string, string> = {
                 <CardContent className="pt-0 space-y-2 sm:space-y-3">
                   {codingStats.map((stat, index) => (
                     <Link key={index} href={stat.url}>
-                    <div className={`p-2 mb-3 sm:p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
-                      <div className="flex items-center justify-between mb-1 sm:mb-2">
-                        <span className="font-medium text-white text-xs sm:text-sm">{stat.platform}</span>
-                        <span className={`text-xs sm:text-sm font-bold ${stat.color}`}>{stat.rating}</span>
+                      <div className={`p-2 mb-3 sm:p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
+                        <div className="flex items-center justify-between mb-1 sm:mb-2">
+                          <span className="font-medium text-white text-xs sm:text-sm">{stat.platform}</span>
+                          <span className={`text-xs sm:text-sm font-bold ${stat.color}`}>{stat.rating}</span>
+                        </div>
+                        <div className="text-xs text-[#7d8590]">{stat.problems} problems solved</div>
                       </div>
-                      <div className="text-xs text-[#7d8590]">{stat.problems} problems solved</div>
-                    </div>
                     </Link>
                   ))}
                 </CardContent>
@@ -629,13 +634,13 @@ const languageColors: Record<string, string> = {
                                 <span className="hidden sm:inline">•</span>
                                 <span className="break-all">{exp.url == "" && exp.location}</span>
                                 <Link
-                              href={exp.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-400 hover:underline"
-                            >
-                              {exp.location === "" && exp.url}
-                            </Link>
+                                  href={exp.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-blue-400 hover:underline"
+                                >
+                                  {exp.location === "" && exp.url}
+                                </Link>
                               </div>
                               <Badge
                                 variant="outline"
@@ -687,9 +692,9 @@ const languageColors: Record<string, string> = {
                           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                             <div className="flex flex-col sm:flex-row sm:items-center gap-2 min-w-0">
                               <Link href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="font-semibold text-[#58a6ff] hover:underline cursor-pointer text-xs sm:text-sm sm:text-base truncate">
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold text-[#58a6ff] hover:underline cursor-pointer text-xs sm:text-sm sm:text-base truncate">
                                 {project.title}
                               </Link>
                               <Badge
@@ -732,9 +737,9 @@ const languageColors: Record<string, string> = {
                           <div className="flex flex-wrap gap-2 sm:gap-3 text-xs text-[#7d8590]">
                             <div className="flex items-center gap-1">
                               <div
-                            className="w-2 h-2 sm:w-3 sm:h-3 rounded-full flex-shrink-0"
-                            style={{ backgroundColor: languageColors[project.language] || languageColors.default }}
-                          />
+                                className="w-2 h-2 sm:w-3 sm:h-3 rounded-full flex-shrink-0"
+                                style={{ backgroundColor: languageColors[project.language] || languageColors.default }}
+                              />
 
                               <span>{project.language}</span>
                             </div>
@@ -834,7 +839,7 @@ const languageColors: Record<string, string> = {
       </footer>
 
       {/* AI Chatbot */}
-      <Chatbot 
+      <Chatbot
         portfolioData={{
           projects,
           experiences,
