@@ -114,7 +114,7 @@ export default function Component() {
       description: "A highly scalable, asynchronous web service designed to process, download, and convert media formats (audio/video) from URLs in the background.",
       tech: ["Python", "FastAPI", "PostgreSQL", "Redis", "Celery", "AWS S3 / MinIO", "Docker", "yt-dlp"],
       github: "https://github.com/theNahraf/media-download-service",
-      demo: "https://savemedia.me",
+      demo: "https://www.savemedia.me",
       date: "2025",
       stars: 1,
       forks: 1,
