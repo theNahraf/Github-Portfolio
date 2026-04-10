@@ -67,6 +67,7 @@ const languageColors: Record<string, string> = {
       description: "A production-grade, highly scalable SaaS platform for shortening URLs and tracking link analytics with sub-100ms redirect latency.",
       tech: ["Node.js", "PostgreSQL", "Redis", "BullMQ", "Docker"],
       github: "https://github.com/theNahraf",
+      demo: "https://www.nanourl.online",
       date: "2025",
       stars: 1,
       forks: 1,
@@ -117,7 +118,7 @@ const languageColors: Record<string, string> = {
       location: "Remote",
       period: "2025",
       type: "Architect",
-      url : "https://www.fastviddownload.in/",
+      url : "https://savemedia.me",
       description: [
         "Designed and developed an asynchronous, horizontally scalable REST API using FastAPI to process and convert media files, successfully decoupling heavy tasks from the main thread.",
         "Implemented an event-driven architecture using Redis as a message broker and Celery workers, enabling the system to handle thousands of concurrent requests.",
