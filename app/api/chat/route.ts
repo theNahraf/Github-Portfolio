@@ -100,8 +100,8 @@ IMPORTANT FORMATTING RULES:
       })),
     ]
 
-    // Call Grok API (xAI) - OpenAI-compatible endpoint
-    const apiUrl = "https://api.x.ai/v1/chat/completions"
+    // Call Groq API - OpenAI-compatible endpoint
+    const apiUrl = "https://api.groq.com/openai/v1/chat/completions"
     
     const response = await fetch(apiUrl, {
       method: "POST",
@@ -110,7 +110,7 @@ IMPORTANT FORMATTING RULES:
         "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "grok-3-mini-fast",
+        model: "llama3-8b-8192", // Groq's fast Llama 3 model
         messages: chatMessages,
         temperature: 0.7,
         max_tokens: 1000,
@@ -125,16 +125,16 @@ IMPORTANT FORMATTING RULES:
       } catch {
         errorData = { message: errorText }
       }
-      console.error("Grok API error:", errorData)
+      console.error("Groq API error:", errorData)
       return NextResponse.json(
-        { error: errorData.error?.message || errorData.message || "Failed to get AI response from Grok" },
+        { error: errorData.error?.message || errorData.message || "Failed to get AI response from Groq" },
         { status: response.status }
       )
     }
 
     const data = await response.json()
     
-    // Extract the response text from Grok's OpenAI-compatible response format
+    // Extract the response text
     const aiResponse = data.choices?.[0]?.message?.content || "Sorry, I couldn't generate a response."
     
     return NextResponse.json({ message: aiResponse })
