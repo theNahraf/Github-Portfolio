@@ -47,6 +47,38 @@ const languageColors: Record<string, string> = {
 
   const projects = [
     {
+      title: "NotifyStack (Scalable Notification Infrastructure)",
+      description: "Engineered a distributed, high-throughput notification infrastructure processing event-driven messages via Kafka and decoupled Worker Services.",
+      tech: ["Node.js", "Kafka", "Redis", "PostgreSQL", "Docker", "React"],
+      github: "https://github.com/theNahraf/Notification-Service",
+      demo: "https://www.notifystack.shop/",
+      date: "2025",
+      stars: 1,
+      forks: 1,
+      language: "TypeScript",
+      highlights: [
+        "Built a scalable notification microservice supporting multi-channel delivery (Email, SMS, Push, In-App) processing event-driven messages via Kafka.",
+        "Implemented intelligent provider failover and circuit breakers in the worker layer, automatically routing failed deliveries to fallback providers to ensure near 100% deliverability.",
+        "Designed a low-latency API proxy utilizing Upstash Redis for idempotency, request caching, and rate limiting to prevent downstream bottlenecks during high-traffic spikes."
+      ],
+    },
+    {
+      title: "NanoURL (URL Shortener SaaS Platform)",
+      description: "A production-grade, highly scalable SaaS platform for shortening URLs and tracking link analytics with sub-100ms redirect latency.",
+      tech: ["Node.js", "PostgreSQL", "Redis", "BullMQ", "Docker"],
+      github: "https://github.com/theNahraf",
+      date: "2025",
+      stars: 1,
+      forks: 1,
+      language: "JavaScript",
+      highlights: [
+        "Engineered a high-throughput URL shortener with sub-100ms redirect latency by implementing a Redis write-through caching strategy.",
+        "Implemented a distributed, Twitter-inspired Snowflake ID generator combined with Base62 encoding to generate unique, collision-resistant 5-character short codes capable of handling 4,096 URLs/millisecond.",
+        "Decoupled click-tracking logic from the critical redirect path by utilizing BullMQ background workers, ensuring asynchronous processing of GeoIP and User-Agent data.",
+        "Enforced API rate-limiting via a custom Token Bucket algorithm using Redis Lua scripts."
+      ],
+    },
+    {
       title: "Notification System (LLD)",
       description: "Built a C++ notification system with SMS, Email, and Push support using OOPS and design patterns",
       tech: ["C++", "OOP", "Design Patterns"],
@@ -55,90 +87,41 @@ const languageColors: Record<string, string> = {
       stars: 1,
       forks: 1,
       language: "C++",
-     highlights: [`Designed a modular notification system supporting SMS, Email, and Push channels using the Strategy and
- Decorator patterns`, `Applied SOLID principles to ensure extensibility and clean separation of concerns between sender and message
- interfaces`, ` Implemented a plug-and-play architecture using the Decorator pattern to dynamically switch and combine
- notification channels (Email, SMS, Push); designed the system to be easily extensible and stored all dispatched
- notifications for future tracking`],
+      highlights: [
+        "Designed a modular notification system supporting SMS, Email, and Push channels using the Strategy and Decorator patterns.",
+        "Applied SOLID principles to ensure extensibility and clean separation of concerns between sender and message interfaces."
+      ],
     },
     {
-      title: "Potato Disease Classification App",
-      description: `Developed a mobile app that detects potato leaf diseases using a CNN model with 90%+ accuracy, enabling real-time predictions from camera input via FastAPI and React Native.`,
-      tech: ["TensorFlow", "FastAPI", "CNN", "React Native", "Python"],
-      github: "https://github.com/theNahraf",
-      date: "June 2025",
-      stars: 1,
-      forks: 1,
-      language: "Python",
-      highlights: [ `Built a mobile application powered by a CNN model to classify potato leaf diseases as Healthy, Early Blight, or
- Late Blight`,` Trained the model on a labeled image dataset, achieving 90%+ validation accuracy using convolutional layers,
- dropout, and data augmentation`, `Integrated the model into a camera-based app that allows users to click a photo and instantly get disease
- predictions`, `Designed the app interface for real-time use by farmers and agronomists to assist in early disease detection`],
-    },
-     {
-  title: "Journalist CMS",
-  description: "Built a secure full-stack CMS and portfolio platform for a journalist to publish and manage stories",
-  tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase"],
-  github: "https://github.com/theNahraf/Journalist-CMS-Kashmir-Voice-Project",
-   demo: "https://www.fizalakhan.com",
-  date: "Feb 2025",
-  stars: 1,
-  forks: 1,
-  language: "JavaScript",
-highlights: [
-  `Engineered a cost-effective deployment strategy by adding a 30-second loop in the backend to keep the Render free-tier server warm, ensuring the CMS stays live without delays`,
-  `Delivered a robust CMS and portfolio system for a Kashmiri journalist, enabling seamless publishing and management of 30+ live articles`,
-  `Integrated Firebase for secure authentication and MongoDB for scalable content storage`,
-  `Boosted SEO performance by 50% and improved page load speed by 40% through optimized rendering and media handling`,
-  `Designed with accessibility and reliability in mind to ensure uninterrupted access to sensitive stories`
-],
-
-},
-
-    {
-      title: "SpotLight - The Social App",
-      description: "Built a social app with story, media uploads, and real-time like/comment functionality",
-      tech: ["React Native", "TypeScript", "MongoDB"],
-      github: "https://github.com/theNahraf/spotlight-the-interaction-app",
-      date: "January 2025",
-      stars: 1,
-      forks: 1,
-      language: "TypeScript",
-      highlights: ["Interactive UI with smooth media handling", "Secure authentication and MongoDB integration"],
-    },
-
-    {
-      title: "StudyNotion – EdTech",
-      description: "Built a full-stack EdTech platform with course creation, enrollment, and Razorpay integration",
-      tech: ["Node.js", "Express.js", "MongoDB", "React.js"],
-      github: "https://github.com/theNahraf/StudyNotion-Edtech",
-      demo: "https://study-notion-mern-stack.netlify.app/",
-      date: "November 2024",
+      title: "Journalist CMS",
+      description: "Built a secure full-stack CMS and portfolio platform for a journalist to publish and manage stories",
+      tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase"],
+      github: "https://github.com/theNahraf/Journalist-CMS-Kashmir-Voice-Project",
+      demo: "https://www.fizalakhan.com",
+      date: "Feb 2025",
       stars: 1,
       forks: 1,
       language: "JavaScript",
-      highlights: [`Developed a full-stack EdTech platform capable of handling up to 500 concurrent users with features for course
- creation, management, and student enrollment`,
- `Implemented role-based authentication using JWT, with OTP-based login verification for enhanced security`,
- `Integrated Razorpay for secure payments and deployed an AI-powered chatbot that handles 100+ student queries
- weekly`],
-    },
-   
-
+      highlights: [
+        "Engineered a cost-effective deployment strategy by adding a 30-second loop in the backend to keep the Render free-tier server warm, ensuring the CMS stays live without delays.",
+        "Delivered a robust CMS and portfolio system for a Kashmiri journalist, enabling seamless publishing and management of 30+ live articles.",
+        "Boosted SEO performance by 50% and improved page load speed by 40% through optimized rendering and media handling."
+      ],
+    }
   ]
 
   const experiences = [
     {
-      title: "Deep Learning Research Intern",
-      company: "NSUT",
-      location: "New Delhi, Delhi",
-      period: "June 2025 – Present",
-      type: "Hydroponic Plant Analysis",
-      url : "",
+      title: "Software Engineer / Backend Developer",
+      company: "Client",
+      location: "Remote",
+      period: "2025",
+      type: "Architect",
+      url : "https://www.fastviddownload.in/",
       description: [
-        "Working on classification of hydroponic plant conditions using deep learning on hyperspectral data",
-        "Analyzing plant leaf spectra to predict chemical deficiencies and nutrient imbalances",
-        "Exploring CNN and transfer learning techniques to enhance prediction accuracy",
+        "Designed and developed an asynchronous, horizontally scalable REST API using FastAPI to process and convert media files, successfully decoupling heavy tasks from the main thread.",
+        "Implemented an event-driven architecture using Redis as a message broker and Celery workers, enabling the system to handle thousands of concurrent requests.",
+        "Containerized the entire multi-tier architecture using Docker and Docker Compose, configuring robust worker failover strategies."
       ],
     },
     {
@@ -149,21 +132,18 @@ highlights: [
       period: "Dec. 2024 – June 2025",
       type: "Freelance",
       description: [
-        `Collaborated with small businesses and individuals to build and modernize websites, boosting online presence and driving customer engagement`,
-        `Developed SEO-optimized personal blogs and portfolio platforms for creators and 
-        professionals, reducing content publishing time by up to 60%`,
-        `Optimized a journalist’s CMS blog and portfolio by reducing page load time from minutes to seconds through
- backend refactoring implemented a 30-second interval loop to pre-fetch data, significantly improving responsiveness
- and cutting hosting cost`,
+        "Developed SEO-optimized personal blogs and portfolio platforms for creators and professionals, reducing content publishing time by up to 60%.",
+        "Optimized a journalist's CMS blog and portfolio by reducing page load time from minutes to seconds through backend refactoring.",
+        "Implemented a secure MERN stack portfolio with a hidden custom admin dashboard without exposing public login."
       ],
     },
   ]
 
   const skills = {
-    Languages: ["Python", "C/C++", "JavaScript"],
-    "Databases & Tools": ["MongoDB", "FireBase", "Convex", "Git", "Docker"],
-    Frameworks: ["React.js", "Node.js", "React Native", "Express.js"],
-    "System Design": ["Low-Level Design"],
+    Languages: ["Python", "JavaScript", "TypeScript", "C/C++"],
+    "Databases & Tools": ["PostgreSQL", "Redis", "Kafka", "Docker", "MongoDB"],
+    Frameworks: ["Node.js", "Express.js", "React.js", "FastAPI"],
+    "System Design": ["Low-Level Design", "Microservices Architecture"],
     "Problem Solving": ["Leetcode", "Codeforces", "GFG"],
   }
 
@@ -302,10 +282,10 @@ highlights: [
               <h1 className="text-lg sm:text-2xl font-semibold text-white mb-1">Farhan</h1>
               <Link href={`https://www.github.com/thenahraf`} className="text-sm sm:text-lg text-[#00e2e8] mb-2">Github</Link>
               <div className="text-xs sm:text-sm text-[#e6edf3] mb-3 sm:mb-4 leading-relaxed px-2">
-                🚀 Full-Stack Developer | CS Student | Competitive Programmer | Deep Learning Enthusiast 
-                <p className="text-gray-500 mt-2">Building scalable, production-grade web apps while
-                   solving complex algorithmic problems. Passionate about clean architecture, system design,
-                    and pushing the boundaries of AI.</p>
+                🚀 Software Engineer | Distributed Systems Enthusiast | Competitive Programmer 
+                <p className="text-gray-500 mt-2">Building scalable, production-grade microservices while
+                   solving complex algorithmic problems. Passionate about system design, high-throughput backend architecture,
+                    and clean code.</p>
 
               </div>
               <Button
@@ -333,8 +313,8 @@ highlights: [
                 <h1 className="text-2xl font-semibold text-white mb-1">Farhan</h1>
                 <Link href={`https://www.github.com/thenahraf`} className="text-xl text-[#00e2e8] mb-3">Github</Link>
                 <div className="text-[#e6edf3] font-bold mb-4 leading-relaxed">
-               🚀 Full-Stack Developer | CS Student | Competitive Programmer | Deep Learning Enthusiast 
-<p className="text-gray-500 mt-3">Building scalable, production-grade web apps while solving complex algorithmic problems. Passionate about clean architecture, system design, and pushing the boundaries of AI.
+               🚀 Software Engineer | Distributed Systems Enthusiast | Competitive Programmer 
+<p className="text-gray-500 mt-3">Building scalable, production-grade microservices while solving complex algorithmic problems. Passionate about system design, high-throughput backend architecture, and clean code.
                </p>
                 </div>
 

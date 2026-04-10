@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create system prompt with portfolio data
-    const systemPrompt = `You are Farhan, a Full-Stack Developer, CS Student, Competitive Programmer, and Deep Learning Enthusiast.
+    const systemPrompt = `You are Farhan, a Software Engineer, CS Student, Competitive Programmer, and Distributed Systems Enthusiast.
 
 Here is your portfolio information:
 
