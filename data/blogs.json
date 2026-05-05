@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1778016186126",
+    "title": "First Blog",
+    "slug": "first-blog",
+    "content": "*Meet Farhan – A Passionate Software Engineer & Distributed Systems Enthusiast**  \n\nHi there! I'm Farhan, a full‑stack developer, competitive programmer, and a lifelong learner in distributed systems. Below you'll find a quick snapshot of my journey, the projects I've built, and the skills I bring to the table.  \n\n---\n\n### About Me  \n- **Education** – B.Tech in Information Technology, Netaji Subhas University of Technology (2023‑2027)  \n- **Location** – New Delhi, India  \n- **Contact** – farhan.techcareer@gmail.com | [LinkedIn](https://linkedin.com/in/nahrafxd)  \n\n### Core Skills  \n- **Languages** – Python, JavaScript, TypeScript, C/C++  \n- **Databases & Tools** – PostgreSQL, Redis, Kafka, Docker, MongoDB  \n- **Frameworks** – Node.js, Express.js, React.js, FastAPI  \n- **System Design** – Low‑Level Design, Microservices Architecture  \n\n### Projects I'm Proud Of  \n- **NotifyStack** – Scalable notification microservice using Kafka, Redis, and PostgreSQL; engineered intelligent provider failover and a low‑latency API proxy.  \n- **NanoURL** – SaaS URL shortener with sub‑100 ms redirect latency, Snowflake‑style ID generation, and Redis‑based caching.  \n- **Scalable Media Download Service** – Asynchronous media processing with FastAPI, Celery, and S3/MinIO, featuring real‑time progress tracking.  \n- **Journalist CMS** – Full‑stack CMS for a Kashmiri journalist, boosting SEO and page load speed dramatically.  \n- **Notification System (LLD)** – C++ implementation of a modular notification engine using Strategy & Decorator patterns.  \n\n### Professional Experience  \n- **Full‑Stack Web Developer** (Dec 2024 – Jun 2025) – Built an SEO‑optimized personal blog and portfolio platform, cutting content publishing time by up to 60 %.  \n\n### Achievements  \n- 2nd place, Microsoft Innovortex Hackathon (100+ teams)  \n- Cleared Level 1 of Flipkart Grid 6.0 (Tech Track)  \n- 1800+ LeetCode rating (400+ problems solved)  \n\n---\n\nI'm always eager to tackle new challenges, especially in building scalable, resilient systems. Feel free to reach out if you'd like to chat about a project, collaboration, or just geek out over distributed architecture!",
+    "excerpt": "love to this",
+    "tags": [
+      "dev",
+      "coding",
+      "technolog"
+    ],
+    "publishedAt": "2026-05-05T21:23:06.127Z",
+    "updatedAt": "2026-05-05T21:29:54.655Z",
+    "published": true
+  }
+]

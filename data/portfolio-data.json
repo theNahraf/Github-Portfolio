@@ -1,0 +1,236 @@
+{
+  "profile": {
+    "name": "Farhan",
+    "username": "theNahraf",
+    "tagline": "🚀 Software Engineer | Distributed Systems Enthusiast",
+    "bio": "Building scalable, production-grade microservices while solving complex algorithmic problems.",
+    "detailedBio": "🚀 Software Engineer | Distributed Systems Enthusiast | Competitive Programmer",
+    "detailedBioSub": "Building scalable, production-grade microservices while solving complex algorithmic problems. Passionate about system design, high-throughput backend architecture, and clean code.",
+    "institution": "NSUT",
+    "location": "New Delhi, India",
+    "email": "farhan.techcareer@gmail.com",
+    "phone": "8XXXXXXXX",
+    "avatarFallback": "F"
+  },
+  "socialLinks": {
+    "github": "https://github.com/theNahraf",
+    "linkedin": "https://www.linkedin.com/in/nahrafxd",
+    "twitter": "https://www.x.com/urrafx",
+    "linkedinDisplay": "linkedin.com/in/nahrafxd",
+    "leetcode": "https://www.leetcode.com/u/urraf"
+  },
+  "stats": [
+    {
+      "value": "25+",
+      "label": "Github Repos",
+      "color": "text-white"
+    },
+    {
+      "value": "1.8k",
+      "label": "LeetCode Rating",
+      "color": "text-[#ffa116]"
+    },
+    {
+      "value": "1000+",
+      "label": "Codeforces",
+      "color": "text-[#1f8acb]"
+    },
+    {
+      "value": "700+",
+      "label": "Problems Solved",
+      "color": "text-[#2ea043]"
+    }
+  ],
+  "projects": [
+    {
+      "title": "NotifyStack (Scalable Notification Infrastructure)",
+      "description": "Engineered a distributed, high-throughput notification infrastructure processing event-driven messages via Kafka and decoupled Worker Services.",
+      "tech": [
+        "Node.js",
+        "Kafka",
+        "Redis",
+        "PostgreSQL",
+        "Docker",
+        "React"
+      ],
+      "github": "https://github.com/theNahraf/Notification-Service",
+      "demo": "https://www.notifystack.shop/",
+      "date": "2025",
+      "stars": 1,
+      "forks": 1,
+      "language": "TypeScript",
+      "highlights": [
+        "Built a scalable notification microservice supporting multi-channel delivery (Email, SMS, Push, In-App) processing event-driven messages via Kafka.",
+        "Implemented intelligent provider failover and circuit breakers in the worker layer, automatically routing failed deliveries to fallback providers to ensure near 100% deliverability.",
+        "Designed a low-latency API proxy utilizing Upstash Redis for idempotency, request caching, and rate limiting to prevent downstream bottlenecks during high-traffic spikes."
+      ]
+    },
+    {
+      "title": "NanoURL (URL Shortener SaaS Platform)",
+      "description": "A production-grade, highly scalable SaaS platform for shortening URLs and tracking link analytics with sub-100ms redirect latency.",
+      "tech": [
+        "Node.js",
+        "PostgreSQL",
+        "Redis",
+        "BullMQ",
+        "Docker"
+      ],
+      "github": "https://github.com/theNahraf",
+      "demo": "https://www.nanourl.online",
+      "date": "2025",
+      "stars": 1,
+      "forks": 1,
+      "language": "JavaScript",
+      "highlights": [
+        "Engineered a high-throughput URL shortener with sub-100ms redirect latency by implementing a Redis write-through caching strategy.",
+        "Implemented a distributed, Twitter-inspired Snowflake ID generator combined with Base62 encoding to generate unique, collision-resistant 5-character short codes capable of handling 4,096 URLs/millisecond.",
+        "Decoupled click-tracking logic from the critical redirect path by utilizing BullMQ background workers, ensuring asynchronous processing of GeoIP and User-Agent data.",
+        "Enforced API rate-limiting via a custom Token Bucket algorithm using Redis Lua scripts."
+      ]
+    },
+    {
+      "title": "Notification System (LLD)",
+      "description": "Built a C++ notification system with SMS, Email, and Push support using OOPS and design patterns",
+      "tech": [
+        "C++",
+        "OOP",
+        "Design Patterns"
+      ],
+      "github": "https://github.com/theNahraf/Notification_LLD_Scalable_System_Design",
+      "demo": "",
+      "date": "June 2025",
+      "stars": 1,
+      "forks": 1,
+      "language": "C++",
+      "highlights": [
+        "Designed a modular notification system supporting SMS, Email, and Push channels using the Strategy and Decorator patterns.",
+        "Applied SOLID principles to ensure extensibility and clean separation of concerns between sender and message interfaces."
+      ]
+    },
+    {
+      "title": "Journalist CMS",
+      "description": "Built a secure full-stack CMS and portfolio platform for a journalist to publish and manage stories",
+      "tech": [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Firebase"
+      ],
+      "github": "https://github.com/theNahraf/Journalist-CMS-Kashmir-Voice-Project",
+      "demo": "https://www.fizalakhan.com",
+      "date": "Feb 2025",
+      "stars": 1,
+      "forks": 1,
+      "language": "JavaScript",
+      "highlights": [
+        "Engineered a cost-effective deployment strategy by adding a 30-second loop in the backend to keep the Render free-tier server warm, ensuring the CMS stays live without delays.",
+        "Delivered a robust CMS and portfolio system for a Kashmiri journalist, enabling seamless publishing and management of 30+ live articles.",
+        "Boosted SEO performance by 50% and improved page load speed by 40% through optimized rendering and media handling."
+      ]
+    },
+    {
+      "title": "Scalable Media Download Service",
+      "description": "A highly scalable, asynchronous web service designed to process, download, and convert media formats (audio/video) from URLs in the background.",
+      "tech": [
+        "Python",
+        "FastAPI",
+        "PostgreSQL",
+        "Redis",
+        "Celery",
+        "AWS S3 / MinIO",
+        "Docker",
+        "yt-dlp"
+      ],
+      "github": "https://github.com/theNahraf/media-download-service",
+      "demo": "https://www.savemedia.me",
+      "date": "2025",
+      "stars": 1,
+      "forks": 1,
+      "language": "Python",
+      "highlights": [
+        "Built a highly concurrent media processing API using FastAPI, Python, and PostgreSQL.",
+        "Decoupled heavy compute tasks by segregating FastAPI web nodes from Celery worker nodes using Redis as a message broker.",
+        "Implemented real-time progress tracking by caching live download percentages directly in Redis, averting database contention.",
+        "Integrated AWS S3 / MinIO object storage for large file management, completely bypassing the application server via Pre-Signed URLs.",
+        "Configured robust worker failover strategies and deployed the containerized microservice stack using Docker Compose."
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "title": "Full-Stack Web Developer",
+      "company": "Client: Journalist (Kashmir)",
+      "location": "",
+      "url": "https://www.fizalakhan.com",
+      "period": "Dec. 2024 – June 2025",
+      "type": "Freelance",
+      "description": [
+        "Developed SEO-optimized personal blogs and portfolio platforms for creators and professionals, reducing content publishing time by up to 60%.",
+        "Optimized a journalist's CMS blog and portfolio by reducing page load time from minutes to seconds through backend refactoring.",
+        "Implemented a secure MERN stack portfolio with a hidden custom admin dashboard without exposing public login."
+      ]
+    }
+  ],
+  "skills": {
+    "Languages": [
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "C/C++"
+    ],
+    "Databases & Tools": [
+      "PostgreSQL",
+      "Redis",
+      "Kafka",
+      "Docker",
+      "MongoDB"
+    ],
+    "Frameworks": [
+      "Node.js",
+      "Express.js",
+      "React.js",
+      "FastAPI"
+    ],
+    "System Design": [
+      "Low-Level Design",
+      "Microservices Architecture"
+    ],
+    "Problem Solving": [
+      "Leetcode",
+      "Codeforces",
+      "GFG"
+    ]
+  },
+  "achievements": [
+    "Secured 2nd position at Microsoft Innovortex Hackathon among 100+ teams",
+    "Cleared Level 1 of Flipkart Grid 6.0 (Tech Track)",
+    "Achieved 1800+ rating on LeetCode by solving 400+ Data Structures and Algorithms problems",
+    "love to create blog"
+  ],
+  "codingStats": [
+    {
+      "platform": "LeetCode",
+      "rating": "1800+",
+      "problems": "400+",
+      "color": "text-[#ffa116]",
+      "bgColor": "bg-[#ffa116]/10",
+      "borderColor": "border-[#ffa116]/20",
+      "url": "https://www.leetcode.com/u/urraf"
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Technology",
+    "field": "Information Technology",
+    "institution": "Netaji Subhas University of Technology, New Delhi",
+    "period": "2023 - 2027",
+    "coursework": [
+      "Data Structures",
+      "Database Management System",
+      "Operating Systems",
+      "Computer Networks",
+      "System Design",
+      "OOPS"
+    ]
+  }
+}

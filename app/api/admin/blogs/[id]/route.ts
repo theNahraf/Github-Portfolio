@@ -1,0 +1,90 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { ObjectId } from 'mongodb';
+import { isAuthenticated } from '@/lib/auth';
+import { getDb } from '@/lib/mongodb';
+
+// PUT - update a blog post
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const authenticated = await isAuthenticated();
+    if (!authenticated) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { id } = await params;
+    const blogData = await request.json();
+    const db = await getDb();
+
+    let filter;
+    try {
+      filter = { _id: new ObjectId(id) };
+    } catch {
+      // If id is not a valid ObjectId (legacy data), try as string
+      filter = { _id: id as unknown as ObjectId };
+    }
+
+    const existing = await db.collection('blogs').findOne(filter);
+    if (!existing) {
+      return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+    }
+
+    // Sanitize slug
+    const rawSlug = blogData.slug ?? existing.slug;
+    const sanitizedSlug = rawSlug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+    const updateData = {
+      title: blogData.title ?? existing.title,
+      slug: sanitizedSlug || existing.slug,
+      content: blogData.content ?? existing.content,
+      excerpt: blogData.excerpt ?? existing.excerpt,
+      tags: blogData.tags ?? existing.tags,
+      published: blogData.published ?? existing.published,
+      updatedAt: new Date().toISOString(),
+    };
+
+    await db.collection('blogs').updateOne(filter, { $set: updateData });
+
+    const updated = { id, ...updateData, publishedAt: existing.publishedAt };
+    return NextResponse.json(updated);
+  } catch (error) {
+    console.error('Error updating blog:', error);
+    return NextResponse.json({ error: 'Failed to update blog' }, { status: 500 });
+  }
+}
+
+// DELETE - delete a blog post
+export async function DELETE(
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const authenticated = await isAuthenticated();
+    if (!authenticated) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { id } = await params;
+    const db = await getDb();
+
+    let filter;
+    try {
+      filter = { _id: new ObjectId(id) };
+    } catch {
+      filter = { _id: id as unknown as ObjectId };
+    }
+
+    const result = await db.collection('blogs').deleteOne(filter);
+
+    if (result.deletedCount === 0) {
+      return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error deleting blog:', error);
+    return NextResponse.json({ error: 'Failed to delete blog' }, { status: 500 });
+  }
+}

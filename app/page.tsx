@@ -1,5 +1,38 @@
-import Component from "../portfolio"
+import PortfolioClient from "../portfolio"
 
-export default function Page() {
-  return <Component />
+export const dynamic = 'force-dynamic'
+
+export default async function Page() {
+  let portfolioData = null
+
+  // Try MongoDB first
+  if (process.env.MONGODB_URI) {
+    try {
+      const { getDb } = await import("@/lib/mongodb")
+      const db = await getDb()
+      const data = await db.collection('portfolio').findOne({ _id: 'main' as unknown as import('mongodb').ObjectId })
+      if (data) {
+        const { _id, ...rest } = data
+        void _id
+        portfolioData = rest
+      }
+    } catch (e) {
+      console.error('Failed to read from MongoDB:', e)
+    }
+  }
+
+  // Fallback to JSON file (for local dev without MongoDB)
+  if (!portfolioData) {
+    try {
+      const fs = await import('fs')
+      const path = await import('path')
+      const dataPath = path.join(process.cwd(), 'data', 'portfolio-data.json')
+      const raw = fs.readFileSync(dataPath, 'utf-8')
+      portfolioData = JSON.parse(raw)
+    } catch (e) {
+      console.error('Failed to read portfolio data:', e)
+    }
+  }
+
+  return <PortfolioClient data={portfolioData} />
 }

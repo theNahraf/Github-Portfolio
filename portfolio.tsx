@@ -10,12 +10,16 @@ import { useState } from "react"
 import Chatbot from "@/components/chatbot"
 import AnimatedBackground from "@/components/animated-background"
 
-export default function Component() {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+interface PortfolioProps {
+  data?: any
+}
+
+export default function Component({ data }: PortfolioProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Function to handle resume download
   const handleDownloadResume = () => {
-    // Navigate to our dedicated download API which forces the browser to download the file via headers
     window.location.href = "/api/download/resume";
   }
 
@@ -36,145 +40,20 @@ export default function Component() {
     PHP: "#4F5D95",
     Swift: "#ffac45",
     Kotlin: "#A97BFF",
-    default: "#6e7681", // fallback color
+    default: "#6e7681",
   };
 
-
-  const projects = [
-    {
-      title: "NotifyStack (Scalable Notification Infrastructure)",
-      description: "Engineered a distributed, high-throughput notification infrastructure processing event-driven messages via Kafka and decoupled Worker Services.",
-      tech: ["Node.js", "Kafka", "Redis", "PostgreSQL", "Docker", "React"],
-      github: "https://github.com/theNahraf/Notification-Service",
-      demo: "https://www.notifystack.shop/",
-      date: "2025",
-      stars: 1,
-      forks: 1,
-      language: "TypeScript",
-      highlights: [
-        "Built a scalable notification microservice supporting multi-channel delivery (Email, SMS, Push, In-App) processing event-driven messages via Kafka.",
-        "Implemented intelligent provider failover and circuit breakers in the worker layer, automatically routing failed deliveries to fallback providers to ensure near 100% deliverability.",
-        "Designed a low-latency API proxy utilizing Upstash Redis for idempotency, request caching, and rate limiting to prevent downstream bottlenecks during high-traffic spikes."
-      ],
-    },
-    {
-      title: "NanoURL (URL Shortener SaaS Platform)",
-      description: "A production-grade, highly scalable SaaS platform for shortening URLs and tracking link analytics with sub-100ms redirect latency.",
-      tech: ["Node.js", "PostgreSQL", "Redis", "BullMQ", "Docker"],
-      github: "https://github.com/theNahraf",
-      demo: "https://www.nanourl.online",
-      date: "2025",
-      stars: 1,
-      forks: 1,
-      language: "JavaScript",
-      highlights: [
-        "Engineered a high-throughput URL shortener with sub-100ms redirect latency by implementing a Redis write-through caching strategy.",
-        "Implemented a distributed, Twitter-inspired Snowflake ID generator combined with Base62 encoding to generate unique, collision-resistant 5-character short codes capable of handling 4,096 URLs/millisecond.",
-        "Decoupled click-tracking logic from the critical redirect path by utilizing BullMQ background workers, ensuring asynchronous processing of GeoIP and User-Agent data.",
-        "Enforced API rate-limiting via a custom Token Bucket algorithm using Redis Lua scripts."
-      ],
-    },
-    {
-      title: "Notification System (LLD)",
-      description: "Built a C++ notification system with SMS, Email, and Push support using OOPS and design patterns",
-      tech: ["C++", "OOP", "Design Patterns"],
-      github: "https://github.com/theNahraf/Notification_LLD_Scalable_System_Design",
-      date: "June 2025",
-      stars: 1,
-      forks: 1,
-      language: "C++",
-      highlights: [
-        "Designed a modular notification system supporting SMS, Email, and Push channels using the Strategy and Decorator patterns.",
-        "Applied SOLID principles to ensure extensibility and clean separation of concerns between sender and message interfaces."
-      ],
-    },
-    {
-      title: "Journalist CMS",
-      description: "Built a secure full-stack CMS and portfolio platform for a journalist to publish and manage stories",
-      tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Firebase"],
-      github: "https://github.com/theNahraf/Journalist-CMS-Kashmir-Voice-Project",
-      demo: "https://www.fizalakhan.com",
-      date: "Feb 2025",
-      stars: 1,
-      forks: 1,
-      language: "JavaScript",
-      highlights: [
-        "Engineered a cost-effective deployment strategy by adding a 30-second loop in the backend to keep the Render free-tier server warm, ensuring the CMS stays live without delays.",
-        "Delivered a robust CMS and portfolio system for a Kashmiri journalist, enabling seamless publishing and management of 30+ live articles.",
-        "Boosted SEO performance by 50% and improved page load speed by 40% through optimized rendering and media handling."
-      ],
-    },
-    {
-      title: "Scalable Media Download Service",
-      description: "A highly scalable, asynchronous web service designed to process, download, and convert media formats (audio/video) from URLs in the background.",
-      tech: ["Python", "FastAPI", "PostgreSQL", "Redis", "Celery", "AWS S3 / MinIO", "Docker", "yt-dlp"],
-      github: "https://github.com/theNahraf/media-download-service",
-      demo: "https://www.savemedia.me",
-      date: "2025",
-      stars: 1,
-      forks: 1,
-      language: "Python",
-      highlights: [
-        "Built a highly concurrent media processing API using FastAPI, Python, and PostgreSQL.",
-        "Decoupled heavy compute tasks by segregating FastAPI web nodes from Celery worker nodes using Redis as a message broker.",
-        "Implemented real-time progress tracking by caching live download percentages directly in Redis, averting database contention.",
-        "Integrated AWS S3 / MinIO object storage for large file management, completely bypassing the application server via Pre-Signed URLs.",
-        "Configured robust worker failover strategies and deployed the containerized microservice stack using Docker Compose."
-      ],
-    }
-  ]
-
-  const experiences = [
-    {
-      title: "Full-Stack Web Developer",
-      company: "Client: Journalist (Kashmir)",
-      location: "",
-      url: 'https://www.fizalakhan.com',
-      period: "Dec. 2024 – June 2025",
-      type: "Freelance",
-      description: [
-        "Developed SEO-optimized personal blogs and portfolio platforms for creators and professionals, reducing content publishing time by up to 60%.",
-        "Optimized a journalist's CMS blog and portfolio by reducing page load time from minutes to seconds through backend refactoring.",
-        "Implemented a secure MERN stack portfolio with a hidden custom admin dashboard without exposing public login."
-      ],
-    },
-  ]
-
-  const skills = {
-    Languages: ["Python", "JavaScript", "TypeScript", "C/C++"],
-    "Databases & Tools": ["PostgreSQL", "Redis", "Kafka", "Docker", "MongoDB"],
-    Frameworks: ["Node.js", "Express.js", "React.js", "FastAPI"],
-    "System Design": ["Low-Level Design", "Microservices Architecture"],
-    "Problem Solving": ["Leetcode", "Codeforces", "GFG"],
-  }
-
-  const achievements = [
-    "Secured 2nd position at Microsoft Innovortex Hackathon among 100+ teams",
-    "Cleared Level 1 of Flipkart Grid 6.0 (Tech Track)",
-    "Achieved 1800+ rating on LeetCode by solving 400+ Data Structures and Algorithms problems",
-  ]
-
-  // Coding platform stats
-  const codingStats = [
-    {
-      platform: "LeetCode",
-      rating: "1800+",
-      problems: "400+",
-      color: "text-[#ffa116]",
-      bgColor: "bg-[#ffa116]/10",
-      borderColor: "border-[#ffa116]/20",
-      url: `https://www.leetcode.com/u/urraf`
-    },
-    // {
-    //   platform: "Codeforces",
-    //   rating: "450+",
-    //   problems: "100+",
-    //   color: "text-[#1f8acb]",
-    //   bgColor: "bg-[#1f8acb]/10",
-    //   borderColor: "border-[#1f8acb]/20",
-    //   url: `https://codeforces.com/profile/nahraf.xd`
-    // },
-  ]
+  // Use data from props (JSON file) or fallback defaults
+  const profile = data?.profile || { name: "Farhan", username: "theNahraf", tagline: "🚀 Software Engineer", bio: "", detailedBio: "", detailedBioSub: "", institution: "NSUT", location: "New Delhi, India", email: "farhan.techcareer@gmail.com", phone: "8XXXXXXXX", avatarFallback: "F" }
+  const socialLinks = data?.socialLinks || { github: "https://github.com/theNahraf", linkedin: "https://www.linkedin.com/in/nahrafxd", twitter: "https://www.x.com/urrafx", linkedinDisplay: "linkedin.com/in/nahrafxd", leetcode: "https://www.leetcode.com/u/urraf" }
+  const stats = data?.stats || [{ value: "25+", label: "Github Repos", color: "text-white" }, { value: "1.8k", label: "LeetCode Rating", color: "text-[#ffa116]" }, { value: "1000+", label: "Codeforces", color: "text-[#1f8acb]" }, { value: "700+", label: "Problems Solved", color: "text-[#2ea043]" }]
+  const projects: any[] = data?.projects || []
+  const experiences: any[] = data?.experiences || []
+  const skills: Record<string, string[]> = data?.skills || {}
+  const achievements: string[] = data?.achievements || []
+  const codingStats: any[] = data?.codingStats || []
+  const education: any = data?.education || { degree: "Bachelor of Technology", field: "Information Technology", institution: "Netaji Subhas University of Technology, New Delhi", period: "2023 - 2027", coursework: [] }
+  const profileImageUrl = data?.profileImageUrl || "/profile2.jpeg"
 
   return (
     <div className="min-h-screen bg-[#0d1117] text-[#e6edf3] w-full overflow-x-hidden relative">
@@ -187,30 +66,34 @@ export default function Component() {
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
               <Avatar className="h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0 ">
-                <AvatarImage src="/profile2.jpeg?height=32&width=32" alt="Farhan" className="object-cover" />
-                <AvatarFallback className="bg-[#21262d] text-white text-xs sm:text-sm">F</AvatarFallback>
+                <AvatarImage src={profileImageUrl} alt={profile.name} className="object-cover" />
+                <AvatarFallback className="bg-[#21262d] text-white text-xs sm:text-sm">{profile.avatarFallback}</AvatarFallback>
               </Avatar>
-              <span className="text-white font-medium text-xs sm:text-base truncate">Farhan</span>
+              <span className="text-white font-medium text-xs sm:text-base truncate">{profile.name}</span>
               <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-sm ml-4 lg:ml-6">
                 <Link href="#overview" className="text-[#e6edf3] hover:text-white transition-colors whitespace-nowrap">
                   Overview
                 </Link>
                 <Link
-                  href={`https://github.com/theNahraf`}
+                  href={socialLinks.github}
                   target="_blank" rel="noopener noreferrer"
                   className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap"
                 >
                   Github
                 </Link>
-                <Link href={`https://www.linkedin.com/in/nahrafxd`}
+                <Link href={socialLinks.linkedin}
                   target="_blank" rel="noopener noreferrer"
                   className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
                   Linkedin
                 </Link>
-                <Link href={`https://www.x.com/urrafx`}
+                <Link href={socialLinks.twitter}
                   target="_blank" rel="noopener noreferrer"
                   className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
                   Twitter
+                </Link>
+                <Link href="/blog"
+                  className="text-[#7d8590] hover:text-white transition-colors whitespace-nowrap">
+                  Blog
                 </Link>
               </nav>
             </div>
@@ -241,18 +124,18 @@ export default function Component() {
                 <Link href="#overview" className="text-[#e6edf3] hover:text-white transition-colors py-1 w-full">
                   Overview
                 </Link>
-                <Link href={`https://github.com/theNahraf`}
+                <Link href={socialLinks.github}
                   target="_blank" rel="noopener noreferrer"
                   className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
                   Github
                 </Link>
                 <Link
-                  href={`https://www.linkedin.com/in/nahrafxd`}
+                  href={socialLinks.linkedin}
                   target="_blank" rel="noopener noreferrer"
                   className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
                   Linkedin
                 </Link>
-                <Link href={`https://www.x.com/urrafx`}
+                <Link href={socialLinks.twitter}
                   target="_blank" rel="noopener noreferrer"
                   className="text-[#7d8590] hover:text-white transition-colors py-1 w-full">
                   Twitter
@@ -276,16 +159,15 @@ export default function Component() {
         <div className="lg:hidden mb-8 sm:mb-10 w-full mt-2">
           <div className="flex flex-col items-center text-center space-y-4 sm:space-y-6 w-full">
             <Avatar className="h-28 w-28 sm:h-40 sm:w-40 flex-shrink-0 border-4 border-[#30363d] shadow-lg shadow-[#58a6ff]/10">
-              <AvatarImage src="/profile2.jpeg?height=160&width=160" alt="Farhan" className="object-cover" />
-              <AvatarFallback className="bg-[#21262d] text-3xl sm:text-4xl text-white">F</AvatarFallback>
+              <AvatarImage src={profileImageUrl} alt={profile.name} className="object-cover" />
+              <AvatarFallback className="bg-[#21262d] text-3xl sm:text-4xl text-white">{profile.avatarFallback}</AvatarFallback>
             </Avatar>
             <div className="w-full max-w-sm mx-auto px-2">
-              <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 tracking-tight">Farhan</h1>
-              <Link href={`https://www.github.com/thenahraf`} className="text-base sm:text-lg text-[#58a6ff] hover:text-[#79c0ff] font-medium mb-3 block transition-colors">@theNahraf</Link>
+              <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 tracking-tight">{profile.name}</h1>
+              <Link href={socialLinks.github} className="text-base sm:text-lg text-[#58a6ff] hover:text-[#79c0ff] font-medium mb-3 block transition-colors">@{profile.username}</Link>
               <div className="text-sm sm:text-base text-[#e6edf3] mb-6 leading-relaxed bg-[#161b22]/40 border border-[#30363d] p-4 sm:p-5 rounded-2xl shadow-sm backdrop-blur-sm">
-                🚀 Software Engineer | Distributed Systems Enthusiast
-                <p className="text-[#8b949e] mt-2 font-medium">Building scalable, production-grade microservices while
-                  solving complex algorithmic problems.</p>
+                {profile.tagline}
+                <p className="text-[#8b949e] mt-2 font-medium">{profile.bio}</p>
               </div>
               <Button
                 onClick={handleDownloadResume}
@@ -304,16 +186,16 @@ export default function Component() {
             {/* Desktop Profile Card */}
             <div className="space-y-4">
               <Avatar className="h-64 w-64 mx-auto xl:h-72 xl:w-72 ">
-                <AvatarImage src="/profile2.jpeg?height=288&width=288" alt="Farhan" className="object-cover" />
-                <AvatarFallback className="bg-[#21262d] text-5xl xl:text-6xl text-white">F</AvatarFallback>
+                <AvatarImage src={profileImageUrl} alt={profile.name} className="object-cover" />
+                <AvatarFallback className="bg-[#21262d] text-5xl xl:text-6xl text-white">{profile.avatarFallback}</AvatarFallback>
               </Avatar>
 
               <div className="text-center xl:text-left">
-                <h1 className="text-2xl font-semibold text-white mb-1">Farhan</h1>
-                <Link href={`https://www.github.com/thenahraf`} className="text-xl text-[#00e2e8] mb-3">Github</Link>
+                <h1 className="text-2xl font-semibold text-white mb-1">{profile.name}</h1>
+                <Link href={socialLinks.github} className="text-xl text-[#00e2e8] mb-3">Github</Link>
                 <div className="text-[#e6edf3] font-bold mb-4 leading-relaxed">
-                  🚀 Software Engineer | Distributed Systems Enthusiast | Competitive Programmer
-                  <p className="text-gray-500 mt-3">Building scalable, production-grade microservices while solving complex algorithmic problems. Passionate about system design, high-throughput backend architecture, and clean code.
+                  {profile.detailedBio}
+                  <p className="text-gray-500 mt-3">{profile.detailedBioSub}
                   </p>
                 </div>
 
@@ -328,30 +210,30 @@ export default function Component() {
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-2 text-[#7d8590] justify-center xl:justify-start">
                     <Building className="h-4 w-4 flex-shrink-0" />
-                    <span>NSUT</span>
+                    <span>{profile.institution}</span>
                   </div>
                   <div className="flex items-center gap-2 text-[#7d8590] justify-center xl:justify-start">
                     <MapPin className="h-4 w-4 flex-shrink-0" />
-                    <span>New Delhi, India</span>
+                    <span>{profile.location}</span>
                   </div>
                   <div className="flex items-center gap-2 justify-center xl:justify-start">
                     <Mail className="h-4 w-4 flex-shrink-0" />
                     <Link
-                      href="mailto:farhan.techcareer@gmail.com"
+                      href={`mailto:${profile.email}`}
                       className="text-[#58a6ff] hover:underline text-xs break-all"
                     >
-                      farhan.techcareer@gmail.com
+                      {profile.email}
                     </Link>
                   </div>
                   <div className="flex items-center gap-2 justify-center xl:justify-start">
                     <Linkedin className="h-4 w-4 flex-shrink-0" />
-                    <Link href="https://linkedin.com/in/nahrafxd/" className="text-[#58a6ff] hover:underline text-xs">
-                      linkedin.com/in/nahrafxd
+                    <Link href={socialLinks.linkedin} className="text-[#58a6ff] hover:underline text-xs">
+                      {socialLinks.linkedinDisplay}
                     </Link>
                   </div>
                   <div className="flex items-center gap-2 text-[#7d8590] justify-center xl:justify-start">
                     <Phone className="h-4 w-4 flex-shrink-0" />
-                    <span>8XXXXXXXX</span>
+                    <span>{profile.phone}</span>
                   </div>
                 </div>
               </div>
@@ -363,7 +245,7 @@ export default function Component() {
                 <CardTitle className="text-white text-base">Coding Platforms</CardTitle>
               </CardHeader>
               <CardContent className="pt-0 space-y-3">
-                {codingStats.map((stat, index) => (
+                {codingStats.map((stat: any, index: number) => (
                   <Link key={index} href={stat.url}>
                     <div className={`mb-3 p-3 rounded-lg border ${stat.bgColor} ${stat.borderColor}`}>
                       <div className="flex items-center justify-between mb-2">
@@ -388,7 +270,7 @@ export default function Component() {
               </CardHeader>
               <CardContent className="pt-0">
                 <ul className="space-y-3">
-                  {achievements.map((achievement, index) => (
+                  {achievements.map((achievement: string, index: number) => (
                     <li key={index} className="flex items-start gap-2 text-sm">
                       <Star className="h-3 w-3 text-[#ffa657] mt-1 flex-shrink-0" />
                       <span className="text-[#e6edf3] leading-relaxed">{achievement}</span>
@@ -408,7 +290,7 @@ export default function Component() {
                   <div key={category}>
                     <h4 className="font-medium text-white text-sm mb-2">{category}</h4>
                     <div className="flex flex-wrap gap-1">
-                      {items.map((skill) => (
+                      {(items as string[]).map((skill: string) => (
                         <Badge
                           key={skill}
                           variant="secondary"
@@ -428,30 +310,14 @@ export default function Component() {
           <div className="lg:col-span-3 space-y-3 sm:space-y-6 w-full min-w-0">
             {/* Stats Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full">
-              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-all hover:bg-[#1f242c] min-w-0 shadow-sm rounded-xl">
-                <CardContent className="p-4 sm:p-5 text-center flex flex-col justify-center h-full">
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">25+</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate font-medium">Github Repos</div>
-                </CardContent>
-              </Card>
-              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-all hover:bg-[#1f242c] min-w-0 shadow-sm rounded-xl">
-                <CardContent className="p-4 sm:p-5 text-center flex flex-col justify-center h-full">
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#ffa116] mb-1">1.8k</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate font-medium">LeetCode Rating</div>
-                </CardContent>
-              </Card>
-              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-all hover:bg-[#1f242c] min-w-0 shadow-sm rounded-xl">
-                <CardContent className="p-4 sm:p-5 text-center flex flex-col justify-center h-full">
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#1f8acb] mb-1">1000+</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate font-medium">Codeforces</div>
-                </CardContent>
-              </Card>
-              <Card className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-all hover:bg-[#1f242c] min-w-0 shadow-sm rounded-xl">
-                <CardContent className="p-4 sm:p-5 text-center flex flex-col justify-center h-full">
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#2ea043] mb-1">700+</div>
-                  <div className="text-xs sm:text-sm text-[#7d8590] truncate font-medium">Problems Solved</div>
-                </CardContent>
-              </Card>
+              {stats.map((stat: { value: string; label: string; color: string }, index: number) => (
+                <Card key={index} className="bg-[#161b22] border-[#30363d] hover:border-[#58a6ff] transition-all hover:bg-[#1f242c] min-w-0 shadow-sm rounded-xl">
+                  <CardContent className="p-4 sm:p-5 text-center flex flex-col justify-center h-full">
+                    <div className={`text-xl sm:text-2xl lg:text-3xl font-bold ${stat.color} mb-1`}>{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-[#7d8590] truncate font-medium">{stat.label}</div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
             {/* Contribution Graph */}
@@ -466,7 +332,7 @@ export default function Component() {
                   <CardTitle className="text-white text-base font-semibold">Coding Platforms</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0 space-y-3 px-5 pb-5">
-                  {codingStats.map((stat, index) => (
+                  {codingStats.map((stat: any, index: number) => (
                     <Link key={index} href={stat.url} className="block">
                       <div className={`p-3 sm:p-4 rounded-xl border ${stat.bgColor} ${stat.borderColor} transition-all hover:scale-[1.02]`}>
                         <div className="flex items-center justify-between mb-2">
@@ -493,40 +359,40 @@ export default function Component() {
                       <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
                         <Building className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
                       </div>
-                      <span className="font-medium">NSUT</span>
+                      <span className="font-medium">{profile.institution}</span>
                     </div>
                     <div className="flex items-center gap-3 text-[#e6edf3]">
                       <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
                         <MapPin className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
                       </div>
-                      <span className="font-medium">New Delhi, India</span>
+                      <span className="font-medium">{profile.location}</span>
                     </div>
                     <div className="flex items-center gap-3 min-w-0">
                       <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
                         <Mail className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
                       </div>
                       <Link
-                        href="mailto:farhan.techcareer@gmail.com"
+                        href={`mailto:${profile.email}`}
                         className="text-[#58a6ff] hover:text-[#79c0ff] hover:underline break-all min-w-0 font-medium"
                       >
-                        farhan.techcareer@gmail.com
+                        {profile.email}
                       </Link>
                     </div>
                     <div className="flex items-center gap-3 text-[#e6edf3]">
                       <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
                         <Phone className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
                       </div>
-                      <span className="font-medium">+91-***********</span>
+                      <span className="font-medium">{profile.phone}</span>
                     </div>
                     <div className="flex items-center gap-3 min-w-0">
                       <div className="p-2 bg-[#21262d] rounded-lg border border-[#30363d]">
                         <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-[#7d8590]" />
                       </div>
                       <Link
-                        href="https://linkedin.com/in/nahrafxd/"
+                        href={socialLinks.linkedin}
                         className="text-[#58a6ff] hover:text-[#79c0ff] hover:underline truncate min-w-0 font-medium"
                       >
-                        linkedin.com/in/nahrafxd
+                        {socialLinks.linkedinDisplay}
                       </Link>
                     </div>
                   </div>
@@ -545,7 +411,7 @@ export default function Component() {
                     <div key={category} className="w-full">
                       <h4 className="font-semibold text-white text-sm sm:text-base mb-3">{category}</h4>
                       <div className="flex flex-wrap gap-2">
-                        {items.map((skill) => (
+                        {(items as string[]).map((skill: string) => (
                           <Badge
                             key={skill}
                             variant="secondary"
@@ -576,29 +442,22 @@ export default function Component() {
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                         <div className="flex-1 min-w-0">
                           <h3 className="font-semibold text-white text-sm sm:text-base lg:text-lg">
-                            Bachelor of Technology
+                            {education.degree}
                           </h3>
-                          <p className="text-[#58a6ff] text-sm sm:text-base">Information Technology</p>
-                          <p className="text-[#7d8590] text-xs sm:text-sm">Netaji Subhas University of Technology, New Delhi</p>
+                          <p className="text-[#58a6ff] text-sm sm:text-base">{education.field}</p>
+                          <p className="text-[#7d8590] text-xs sm:text-sm">{education.institution}</p>
                         </div>
                         <Badge
                           variant="outline"
                           className="border-[#30363d] text-[#7d8590] text-xs sm:text-sm w-fit flex-shrink-0"
                         >
-                          2023 - 2027
+                          {education.period}
                         </Badge>
                       </div>
                       <div className="mt-3 sm:mt-4">
                         <h4 className="font-medium text-white text-sm sm:text-base mb-3">Relevant Coursework</h4>
                         <div className="flex flex-wrap gap-2">
-                          {[
-                            "Data Structures",
-                            "Database Management System",
-                            "Operating Systems",
-                            "Computer Networks",
-                            "System Design",
-                            "OOPS",
-                          ].map((course) => (
+                          {(education.coursework || []).map((course: string) => (
                             <Badge
                               key={course}
                               variant="outline"
@@ -661,7 +520,7 @@ export default function Component() {
                           </Badge>
                         </div>
                         <ul className="space-y-2 text-sm sm:text-base text-[#e6edf3] mt-2">
-                          {exp.description.map((item, i) => (
+                          {exp.description.map((item: string, i: number) => (
                             <li key={i} className="flex items-start gap-3">
                               <span className="text-[#58a6ff] mt-1 text-sm flex-shrink-0">▹</span>
                               <span className="leading-relaxed">{item}</span>
@@ -758,7 +617,7 @@ export default function Component() {
                           </div>
 
                           <div className="flex flex-wrap gap-2 mt-1">
-                            {project.tech.map((tech) => (
+                            {project.tech.map((tech: string) => (
                               <Badge
                                 key={tech}
                                 variant="secondary"
@@ -770,7 +629,7 @@ export default function Component() {
                           </div>
 
                           <ul className="space-y-2 text-sm sm:text-base text-[#8b949e] mt-3">
-                            {project.highlights.map((highlight, i) => (
+                            {project.highlights.map((highlight: string, i: number) => (
                               <li key={i} className="flex items-start gap-3">
                                 <span className="mt-1 text-sm flex-shrink-0 text-[#58a6ff]">▹</span>
                                 <span className="leading-relaxed">{highlight}</span>
@@ -816,26 +675,26 @@ export default function Component() {
           <div className="flex flex-col items-center gap-3 sm:gap-4">
             <div className="flex items-center gap-3 sm:gap-4">
               <Link
-                href="https://github.com/theNahraf"
+                href={socialLinks.github}
                 className="text-[#7d8590] hover:text-[#58a6ff] transition-colors"
               >
                 <Github className="h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
               <Link
-                href="https://linkedin.com/in/nahrafxd/"
+                href={socialLinks.linkedin}
                 className="text-[#7d8590] hover:text-[#58a6ff] transition-colors"
               >
                 <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
               <Link
-                href="mailto:farhan.techcareer@gmail.com"
+                href={`mailto:${profile.email}`}
                 className="text-[#7d8590] hover:text-[#58a6ff] transition-colors"
               >
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
             </div>
             <span className="text-[#7d8590] text-xs sm:text-sm text-center px-2">
-              Crafted with care by Farhan • 2025
+              Crafted with care by {profile.name} • 2025
             </span>
           </div>
         </div>
