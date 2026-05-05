@@ -21,8 +21,20 @@ export default function DashboardOverviewPage() {
   const [blogs, setBlogs] = useState<Blog[]>([])
 
   useEffect(() => {
-    fetch("/api/admin/portfolio").then(r => r.json()).then(setData)
-    fetch("/api/admin/blogs").then(r => r.json()).then(setBlogs)
+    fetch("/api/admin/portfolio")
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data && !data.error) setData(data)
+      })
+      .catch(console.error)
+
+    fetch("/api/admin/blogs")
+      .then(r => r.ok ? r.json() : [])
+      .then(data => {
+        if (Array.isArray(data)) setBlogs(data)
+        else setBlogs([])
+      })
+      .catch(() => setBlogs([]))
   }, [])
 
   const statsCards = [
