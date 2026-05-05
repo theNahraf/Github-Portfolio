@@ -20,10 +20,10 @@ export async function PUT(
 
     let filter;
     try {
-      filter = { _id: new ObjectId(id) };
+      filter = { $or: [{ _id: new ObjectId(id) }, { id: id }] };
     } catch {
       // If id is not a valid ObjectId (legacy data), try as string
-      filter = { _id: id as unknown as ObjectId };
+      filter = { $or: [{ _id: id }, { id: id }] } as any;
     }
 
     const existing = await db.collection('blogs').findOne(filter);
@@ -71,9 +71,9 @@ export async function DELETE(
 
     let filter;
     try {
-      filter = { _id: new ObjectId(id) };
+      filter = { $or: [{ _id: new ObjectId(id) }, { id: id }] };
     } catch {
-      filter = { _id: id as unknown as ObjectId };
+      filter = { $or: [{ _id: id }, { id: id }] } as any;
     }
 
     const result = await db.collection('blogs').deleteOne(filter);
