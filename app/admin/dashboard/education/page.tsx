@@ -16,7 +16,12 @@ export default function EducationPage() {
   const [saved, setSaved] = useState(false)
   const [newCourse, setNewCourse] = useState("")
 
-  useEffect(() => { fetch("/api/admin/portfolio").then(r => r.json()).then(setData) }, [])
+  useEffect(() => { 
+    fetch("/api/admin/portfolio")
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (d && !d.error) setData(d) })
+      .catch(console.error)
+  }, [])
 
   const handleSave = async () => {
     if (!data) return; setSaving(true)

@@ -26,7 +26,12 @@ export default function ProfileEditorPage() {
   const fileRef = useRef<HTMLInputElement>(null)
   const [profileImageKey, setProfileImageKey] = useState(0)
 
-  useEffect(() => { fetch("/api/admin/portfolio").then(r => r.json()).then(setData) }, [])
+  useEffect(() => { 
+    fetch("/api/admin/portfolio")
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (d && !d.error) setData(d) })
+      .catch(console.error)
+  }, [])
 
   const handleSave = async () => {
     if (!data) return; setSaving(true)
