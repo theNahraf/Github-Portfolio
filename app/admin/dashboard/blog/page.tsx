@@ -93,7 +93,7 @@ export default function BlogManagerPage() {
       const res = await fetch("/api/admin/upload", { method: "POST", body: formData })
       const data = await res.json()
       if (res.ok && data.url) {
-        insertMarkdown(`![${file.name}](${data.url})`, "", "")
+        insertMarkdown(`![${file.name}](${data.url} =600)`, "", "")
       }
     } catch (e) { console.error(e) }
     setUploading(false)
@@ -139,7 +139,11 @@ export default function BlogManagerPage() {
               <Card className="bg-[#161b22] border-[#30363d]">
                 <CardContent className="p-8">
                   <h1 className="text-3xl font-bold text-white mb-6">{editing.title}</h1>
-                  <MarkdownRenderer content={editing.content} />
+                  <MarkdownRenderer 
+                    content={editing.content} 
+                    isEditable={true}
+                    onContentChange={(newContent) => setEditing({ ...editing, content: newContent })}
+                  />
                 </CardContent>
               </Card>
             ) : (

@@ -1,13 +1,80 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useRef } from "react"
 
 interface MarkdownRendererProps {
   content: string
   className?: string
+  isEditable?: boolean
+  onContentChange?: (newContent: string) => void
 }
 
-export default function MarkdownRenderer({ content, className = "" }: MarkdownRendererProps) {
+export default function MarkdownRenderer({ content, className = "", isEditable = false, onContentChange }: MarkdownRendererProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!isEditable || !onContentChange || !containerRef.current) return
+
+    const container = containerRef.current
+    const images = container.querySelectorAll<HTMLImageElement>('.resizable-image')
+
+    const cleanupFns: Array<() => void> = []
+
+    images.forEach(img => {
+      const figure = img.parentElement
+      if (!figure) return
+
+      // Prevent duplicate handles
+      if (figure.querySelector('.resize-handle')) return
+
+      const handle = document.createElement('div')
+      handle.className = 'resize-handle absolute bottom-0 right-0 w-6 h-6 cursor-se-resize flex items-center justify-center bg-[#58a6ff] rounded-tl-lg rounded-br-xl opacity-0 group-hover:opacity-100 transition-opacity z-10'
+      handle.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v6h-6"/><path d="M21 21l-7-7"/></svg>'
+      
+      figure.appendChild(handle)
+
+      let startX: number, startWidth: number
+
+      const onMouseMove = (e: MouseEvent) => {
+        const newWidth = Math.max(100, startWidth + (e.clientX - startX))
+        img.style.width = `${newWidth}px`
+      }
+
+      const onMouseUp = () => {
+        document.removeEventListener('mousemove', onMouseMove)
+        document.removeEventListener('mouseup', onMouseUp)
+        
+        // Save new width
+        const finalWidth = Math.round(parseFloat(img.style.width))
+        const url = img.getAttribute('data-url')
+        if (url) {
+          // Find the exact markdown string for this image and replace the width parameter
+          // E.g. ![alt](url) -> ![alt](url =WIDTH)
+          const newContent = content.replace(
+            new RegExp(`(!\\[[^\\]]*\\]\\(${url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?:\\s+=\\d+)?(\\))`, 'g'),
+            `$1 =${finalWidth}$2`
+          )
+          if (newContent !== content) {
+            onContentChange(newContent)
+          }
+        }
+      }
+
+      const onMouseDown = (e: MouseEvent) => {
+        e.preventDefault()
+        startX = e.clientX
+        startWidth = img.getBoundingClientRect().width
+        document.addEventListener('mousemove', onMouseMove)
+        document.addEventListener('mouseup', onMouseUp)
+      }
+
+      handle.addEventListener('mousedown', onMouseDown)
+      cleanupFns.push(() => handle.removeEventListener('mousedown', onMouseDown))
+    })
+
+    return () => cleanupFns.forEach(fn => fn())
+  }, [content, isEditable, onContentChange])
+
   const renderMarkdown = (text: string): string => {
     let html = text
 
@@ -34,10 +101,13 @@ export default function MarkdownRenderer({ content, className = "" }: MarkdownRe
     // Escape HTML
     html = html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
 
-    // Images - !(alt)[url]
+    // Images - !(alt)[url] or !(alt)[url =WIDTH]
     html = html.replace(
-      /!\[([^\]]*)\]\(([^)]+)\)/g,
-      '<figure class="my-6"><img src="$2" alt="$1" class="rounded-xl border border-[#30363d] w-full max-w-2xl mx-auto shadow-lg" /><figcaption class="text-center text-[#7d8590] text-sm mt-2 italic">$1</figcaption></figure>'
+      /!\[([^\]]*)\]\(([^)\s]+)(?:\s+=(\d+))?\)/g,
+      (_, alt, url, width) => {
+        const widthStyle = width ? `width: ${width}px;` : 'width: 100%; max-width: 42rem;';
+        return `<figure class="my-6 relative group inline-block max-w-full"><img src="${url}" data-url="${url}" alt="${alt}" class="rounded-xl border border-[#30363d] shadow-lg resizable-image" style="${widthStyle}" /><figcaption class="text-center text-[#7d8590] text-sm mt-2 italic">${alt}</figcaption></figure>`
+      }
     )
 
     // Headers
@@ -97,6 +167,7 @@ export default function MarkdownRenderer({ content, className = "" }: MarkdownRe
 
   return (
     <div
+      ref={containerRef}
       className={`prose prose-invert max-w-none ${className}`}
       dangerouslySetInnerHTML={{ __html: renderMarkdown(content) }}
     />
